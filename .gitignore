@@ -1,2 +1,29 @@
+# Sass
 .sass-cache
 *.css.map
+
+
+# Node
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules
+logs
+*.log
+
+
+# Bower
+bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
+
+
+# Windows/OSX
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+# Thumbnails
+._*
