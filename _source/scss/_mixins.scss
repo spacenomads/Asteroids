@@ -1,0 +1,50 @@
+// SCSS Functions
+@function em($pixels, $context: $f_font_size) {
+	@return #{$pixels/$context}em;
+}
+
+@function img($image, $path: $theme){
+	@return url( #{$path + $image});
+}
+
+@function lh( $fline, $fsize: $f_font_size ) {
+	@return #{ $fline * 100% / $fsize};
+}
+
+@function per($pixels, $context: $d_sitewidth) {
+	@return #{$pixels * 100%/$context};
+}
+
+// SCSS Mixins
+@mixin fontFace($family ,$src , $weight:normal, $style: normal) {
+	@font-face {
+		font-family: $family;
+		src: url('#{$src}.eot');
+		src: url('#{$src}.eot?#iefix') format('embedded-opentype'),
+			url('#{$src}.woff') format('woff'),
+			url('#{$src}.ttf') format('truetype');
+			//url('#{$src}.svg##{$family}') format('svg');
+		font-style: $style;
+		font-weight: $weight;
+	}
+}
+
+@mixin mq($pixels, $width:min-width){
+	@media screen and ( $width: em( $pixels ) ){
+	//@media screen and ($width: #{$pixels}px){
+		@content;
+	}
+}
+
+@mixin snitch(){
+	.snitch{
+		background:$c_black;
+		color:$c_white;
+		left:1em;
+		opacity:.2;
+		padding:.5em 1em;
+		position:fixed;
+		top:1em;
+		z-index:666;
+	}
+}

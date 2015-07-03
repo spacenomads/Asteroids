@@ -1,0 +1,15 @@
+//	EXTENDS
+%clearfix{
+	&:before,
+	&:after{
+		content: '';
+		display: table;
+	}
+	&:after{clear: both;}
+}
+
+%no_list{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
