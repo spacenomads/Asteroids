@@ -34,24 +34,26 @@ Yep, our gulp-ready-prepros-firendly-jade-lover-sass-powered-humanstxt-included 
 <a name="gulp dependencies"></a>
 ## Gulp dependencies
 
-* **del:** ~1.1.0
-* **gulp:** ~3.8.10
-* **gulp-autoprefixer:** ~2.1.0
-* **gulp-concat:** ~2.4.3
-* **gulp-livereload:** ~3.5.0
-* **gulp-minify-css:** ~0.4.2
-* **gulp-notify:** ~2.1.0
-* **gulp-plumber:** ~0.6.6
-* **gulp-rename:** ~1.2.0
-* **gulp-replace:** ~0.5.2
-* **gulp-ruby-sass:** ~1.0.1
-* **gulp-uglify:** ~1.1.0
-* **gulp-util:** ~3.0.2
-* **gulp-combine-mq:** ~0.3.1
+* **del**: ~1.1.0
+* **gulp**: ~3.8.10
+* **gulp-autoprefixer**: ~2.1.0
+* **gulp-combine-mq**: ~0.3.1
+* **gulp-concat**: ~2.4.3
+* **gulp-jade**: ~1.0.1
+* **gulp-livereload**: ~3.5.0
+* **gulp-minify-css**: ~0.4.2
+* **gulp-notify**: ~2.1.0
+* **gulp-plumber**: ~0.6.6
+* **gulp-rename**: ~1.2.0
+* **gulp-replace**: ~0.5.2
+* **gulp-ruby-sass**: ~1.0.1
+* **gulp-uglify**: ~1.1.0
+* **gulp-util**: ~3.0.2
 
 
 <a name="js"></a>
 ## JS
+**Asteorids** uses two JS files, Modernizr which is loadead in the head of the page, and a combined and minified versions of the main script file and all the plugins inside the plugin folder
 
 | Item | Version | Downloaded from |
 | ------ | ------- | --- |
@@ -75,6 +77,8 @@ So, what is next?
 - [ ] Favicon
 - [ ] Mobile icons
 - [ ] We ♥ Gulp
+- [ ] Jade files
+- [ ] Do not use a css reset, at all! #NoResetForTheWin
 - [x] Combine JS files into one file
 - [x] Development branch
 - [x] Ignore Prepros config file
