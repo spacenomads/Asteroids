@@ -14,10 +14,8 @@ Yep, our gulp-ready-prepros-firendly-jade-lover-sass-powered-humanstxt-included 
 ## Project structure
 
 
-
-Raíz
-
-* /_source
+```
+/_source
 	* /scss
     	* /core
     		* _fonts.scss
@@ -50,7 +48,7 @@ Raíz
     	* main.js
     	* plugins.js
     * /jade
-* /public
+/public
     * /assets
         * /css
         * /fonts
@@ -60,7 +58,7 @@ Raíz
         * /js
         	* main.js
         	* plugins.js
-
+```
 
 <a name="gulp dependencies"></a>
 ## Gulp dependencies
