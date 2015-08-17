@@ -13,11 +13,11 @@ Yep, our gulp-ready-prepros-firendly-jade-lover-sass-powered-humanstxt-included 
 <a name="project structure"></a>
 ## Project structure
 
-
 ```
 /_source
 	/scss
     	/core
+    		_common.scss
     		_fonts.scss
     		_functions.scss
     		_mixins.scss
