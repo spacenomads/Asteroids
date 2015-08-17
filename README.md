@@ -14,20 +14,52 @@ Yep, our gulp-ready-prepros-firendly-jade-lover-sass-powered-humanstxt-included 
 ## Project structure
 
 
-	\
-	|- _source
-	|  |- scss
-	|  |  `- incl
-	|  |- jade
-	|  `- js
-	|     `- plugins
-	`- public
-	   `- assets
-	      |- css
-	   		|  `- layout
-	   		|     `- theme
-	   		|- img
-	   		`- js
+
+Raíz
+
+* /_source
+	* /scss
+    	* /core
+    		* _fonts.scss
+    		* _functions.scss
+    		* _mixins.scss
+    		* _placeholders.scss
+    		* _reset.scss
+    		* _variables.scss
+    	* /elements
+    		* _buttons.scss
+    		* _form.scss
+    		* _navigation.scss
+    		* _typography.scss
+    		* ...
+    	* /layout
+    		* _header.scss
+    		* _footer.scss
+    		* _grid.scss
+    		* ...
+		* /pages
+			* _home.scss
+			* ...
+		* /vendors
+			* _jbox.scss
+			* _slick.scss
+			* ...
+		* main.scss
+    * /js
+    	* /plugins
+    	* main.js
+    	* plugins.js
+    * /jade
+* /public
+    * /assets
+        * /css
+        * /fonts
+        * /img
+            * /layout
+                * /partials
+        * /js
+        	* main.js
+        	* plugins.js
 
 
 <a name="gulp dependencies"></a>
