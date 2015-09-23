@@ -1,0 +1,60 @@
+/*
+* #INDEX
+*
+* IMPORTS
+* - Core
+* - Elements
+* - Layout
+* - Pages
+* - Vendors
+*/
+
+
+
+
+/*
+* > IMPORTS
+* >> Core
+ */
+@import 'core/common';
+@import 'core/fonts';
+@import 'core/functions';
+@import 'core/mixins';
+@import 'core/placeholders';
+@import 'core/variables';
+
+
+
+
+/*
+* >> Elements
+*/
+@import 'elements/buttons';
+@import 'elements/forms';
+@import 'elements/navigation';
+@import 'elements/tipograhpy';
+
+
+
+
+/*
+* >> Layout
+*/
+@import 'layout/footer';
+@import 'layout/grid';
+@import 'layout/header';
+
+
+
+
+/*
+* >> Pages
+*/
+@import 'pages/home';
+
+
+
+
+/*
+* >> Vendors
+*/

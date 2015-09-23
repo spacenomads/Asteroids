@@ -1,0 +1,15 @@
+@function em($pixels, $context: $font_size) {
+	@return #{$pixels/$context}em;
+}
+
+@function img($image, $path: $theme){
+	@return url( #{$path + $image});
+}
+
+@function lh( $fline, $fsize: $font_size ) {
+	@return #{ $fline * 100% / $fsize};
+}
+
+@function per($pixels, $context: $dim_sitewidth) {
+	@return #{$pixels * 100%/$context};
+}

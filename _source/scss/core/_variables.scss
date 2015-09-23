@@ -1,0 +1,29 @@
+// Colors
+$color_white: #fff;
+$color_black: #000;
+$color_blue: #07c;
+$color_red: #dd3519;
+
+$color_title: $color_black;
+$color_text: $color_black;
+$color_link: $color_blue;
+$color_alert: $color_red;
+
+// dimensions
+$dim_sitewidth: 960;
+$dim_radius: 3px;
+
+// Fonts
+$font_fallback: arial, sans-serif;
+$font_size: 16;
+$font_line_height: 130%;
+
+// Effects
+$time_transition: .5s;
+
+// Paths
+$theme: '../img/layout/';
+
+// Levels
+$levels: background, header, cover, content, menu, cookies;
+
