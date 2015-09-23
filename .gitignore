@@ -22,8 +22,16 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 .DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
 .AppleDouble
 .LSOverride
 Icon
-# Thumbnails
 ._*
+
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
