@@ -1,5 +1,7 @@
-# asteroids
+# Asteroids - Space Nomads blank starter kit
 Yep, our gulp-ready-prepros-firendly-jade-lover-sass-powered-humanstxt-included html starterkit!
+
+Things you need to know about our way to develop, we use 4 spaces for a tab and JADE to get clean html to use.
 
 <!-- MarkdownTOC depth=3 autolink=true autoanchor=true -->
 
@@ -16,25 +18,25 @@ Yep, our gulp-ready-prepros-firendly-jade-lover-sass-powered-humanstxt-included 
 ```
 /_source
 	/scss
-    	/core
-    		_common.scss
-    		_fonts.scss
-    		_functions.scss
-    		_mixins.scss
-    		_placeholders.scss
-    		_reset.scss
-    		_variables.scss
-    	/elements
-    		_buttons.scss
-    		_form.scss
-    		_navigation.scss
-    		_typography.scss
-    		...
-    	/layout
-    		_header.scss
-    		_footer.scss
-    		_grid.scss
-    		...
+		/core
+			_common.scss
+			_fonts.scss
+			_functions.scss
+			_mixins.scss
+			_placeholders.scss
+			_reset.scss
+			_variables.scss
+		/elements
+			_buttons.scss
+			_form.scss
+			_navigation.scss
+			_typography.scss
+			...
+		/layout
+			_header.scss
+			_footer.scss
+			_grid.scss
+			...
 		/pages
 			_home.scss
 			...
@@ -43,21 +45,22 @@ Yep, our gulp-ready-prepros-firendly-jade-lover-sass-powered-humanstxt-included 
 			_slick.scss
 			...
 		main.scss
-    /js
-    	/plugins
-    	main.js
-    	plugins.js
-    /jade
+	/js
+		/plugins
+		main.js
+		plugins.js
+	/jade
+		index.jade
 /public
-    /assets
-        /css
-        /fonts
-        /img
-            /layout
-                /partials
-        /js
-        	main.js
-        	plugins.js
+	/assets
+		/css
+		/fonts
+		/img
+			/layout
+				/partials
+		/js
+			main.js
+			plugins.js
 ```
 
 <a name="gulp dependencies"></a>
