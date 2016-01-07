@@ -23,6 +23,6 @@
     "bower_components",
     "test",
     "tests",
-    "**/*.cgf"
+    "**/*.cfg"
   ]
 }
