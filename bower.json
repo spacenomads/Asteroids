@@ -1,0 +1,27 @@
+{
+  "name": "Asteroids",
+  "homepage": "https://github.com/spacenomads/Asteroids",
+  "authors": [
+    "Abel Cabans <abel@spacenomads.com>",
+    "Carlos Mañas <carlos@spacenomads.com>"
+  ],
+  "description": "Space Nomads html starter kit",
+  "main": "public/index.html",
+  "moduleType": [],
+  "keywords": [
+    "asteroids",
+    "spacenomads",
+    "kit",
+    "starter",
+    "html"
+  ],
+  "license": "CC0 1.0 Universal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "prepros.cgf"
+  ]
+}
