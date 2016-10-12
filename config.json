@@ -1,8 +1,8 @@
 {
 	"templates": {
 		"src": [
-			"_source/jade/**/*.jade",
-			"!_source/jade/partials/*.jade"
+			"_source/templates/**/*.pug",
+			"!_source/templates/partials/*.pug"
 		],
 		"dest": "public"
 	},
@@ -33,7 +33,7 @@
 			"_source/scss/**/*.{scss,sass,css}"
 		],
 		"templates": [
-			"_source/jade/**/*.jade"
+			"_source/templates/**/*.pug"
 		]
 	}
 }

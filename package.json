@@ -23,6 +23,7 @@
 		"gulp-combine-mq": "^0.4.0",
 		"gulp-concat": "*",
 		"gulp-jade": "*",
+		"gulp-pug": "*",
 		"gulp-notify": "*",
 		"gulp-plumber": "*",
 		"gulp-rename": "*",

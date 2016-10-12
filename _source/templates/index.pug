@@ -1,27 +1,27 @@
 - var lang = 'es'
 - var dev = true
 doctype html
-include partials/_cc.jade
+include partials/_cc.pug
 head
 	meta(charset="utf-8")
 	title Document title
 	meta(name="description")
-	include partials/_head.jade
+	include partials/_head.pug
 body(class = "tpl_home home", class=dev ? '_dev' : '')
 	.page
 
-		include partials/_header.jade
+		include partials/_header.pug
 
-		include partials/_menu.jade
+		include partials/_menu.pug
 
 		main#main.main_container(role = "main")
 			.wrapper
 				p (Main content)
 
-		include partials/_footer.jade
+		include partials/_footer.pug
 
 	<!-- .page -->
 
-	include partials/_js.jade
+	include partials/_js.pug
 
-	include partials/_tag.jade
+	include partials/_tag.pug
