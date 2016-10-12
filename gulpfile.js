@@ -1,72 +1,138 @@
 var
-		autoprefixer = require( 'gulp-autoprefixer' ),
-		combineMq    = require( 'gulp-combine-mq' ),
-		concat       = require( 'gulp-concat' ),
-		cssminifiy   = require( 'gulp-minify-css' ),
-		gulp         = require( 'gulp' ),
-		gutil        = require( 'gulp-util' ),
-		jade         = require( 'gulp-jade' ),
-		livereload   = require( 'gulp-livereload' ),
-		notify       = require( 'gulp-notify' ),
-		plumber      = require( 'gulp-plumber' ),
-		rename       = require( 'gulp-rename' ),
-		replace      = require( 'gulp-replace' ),
-		sass         = require( 'gulp-ruby-sass' ),
-		uglify       = require( 'gulp-uglify' );
+	browserSync	= require('browser-sync'),
+	del					= require('del'),
+	autoprefixer = require('gulp-autoprefixer'),
+	concat			 = require('gulp-concat'),
+	cssminifiy	 = require('gulp-clean-css'),
+	gulp				 = require('gulp'),
+	combineMq		 = require('gulp-combine-mq'),
+	gutil				 = require('gulp-util'),
+	notify			 = require('gulp-notify'),
+	plumber			= require('gulp-plumber'),
+	rename			 = require('gulp-rename'),
+	sass				 = require('gulp-sass'),
+	uglify			 = require('gulp-uglify')
+	config			 = require('./config.json'),
+	runSequence	= require('run-sequence'),
+	sourcemaps	 = require('gulp-sourcemaps'),
+	jade				 = require('gulp-jade')
+	reload			 = browserSync.reload;
 
-var
-	src_folder = '_source',
-	dist_folder = 'public',
-	main_js_file = 'scripts.js';
 
+
+
+
+// > Manage task's errors
 var onError = function (err) {
 	gutil.beep();
 	console.log(err);
 };
 
-gulp.task( 'scss_styles' , function( cb ) {
-	return sass( src_folder + '/scss' )
-		.pipe( replace( /!hosita(\s{1}tupa)?/g, '!important' ) )
-		.pipe( plumber({errorHandler: notify.onError( "Error: <%= error.message %>" )}) )
-		.pipe( autoprefixer({
-			browsers: ['last 3 versions'],
+
+
+
+
+// > Process .JADE files into 'public' folder
+gulp.task( 'templates' , function(cb) {
+	return gulp.src(config.templates.src)
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(jade({}))
+		.pipe(gulp.dest(config.templates.dest))
+		.pipe(browserSync.reload({ stream:true }))
+		.pipe(notify({message: 'JADE OK', onLast: true}));
+});
+
+
+
+
+
+// > Process SASS/SCSS files to generate final css files in 'public' folder
+gulp.task( 'styles' , function(cb) {
+	return gulp.src(config.styles.src)
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(sass({
+			outputStyle: 'compressed',
+		}))
+		.pipe(combineMq({
+			beautify: false
+		}))
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions', 'ie >= 10'],
 			cascade: false
-		}) )
-		.pipe( combineMq() )
-		.pipe( cssminifiy() )
-		.pipe( gulp.dest( dist_folder + '/assets/css' ) );
-});
-
-gulp.task( 'js_scripts', function() {
-	return gulp.src( [ src_folder + '/js/plugins/*.js', src_folder + '/js/*.js'] )
-		.pipe( plumber( {errorHandler: notify.onError("Error: <%= error.message %>")}) )
-		.pipe( concat( main_js_file ) )
-		.pipe( uglify({
-			mangle: false
-		}) )
-		.pipe( gulp.dest( dist_folder + '/assets/js/' ) );
-});
-
-gulp.task('pages', function() {
-  var YOUR_LOCALS = {};
-
-  gulp.src( src_folder + '/jade/*.jade')
-  	.pipe( plumber({errorHandler: notify.onError( "Error: <%= error.message %>" )}) )
-    .pipe(jade({
-      locals: YOUR_LOCALS,
-      pretty: true,
-    }))
-    .pipe(gulp.dest( dist_folder + '/'))
+		}))
+		.pipe(cssminifiy())
+		.pipe(gulp.dest(config.styles.dest))
+		.pipe(browserSync.reload({ stream:true }))
+		.pipe(notify({message: 'CSS OK', onLast: true}));
 });
 
 
-gulp.task( 'watch', function() {
-	livereload.listen();
-	gulp.watch( src_folder + '/js/*.js', ['js_scripts'] ).on( 'change', livereload.changed );
-	gulp.watch( src_folder + '/scss/*.scss', ['scss_styles'] );
-	gulp.watch( dist_folder + '/assets/css/*.css' ).on( 'change', livereload.changed );
-	gulp.watch( src_folder + '/jade/**/*.jade', ['pages'] );
-	gulp.watch( dist_folder + '/*.html' ).on( 'change', livereload.changed );
+
+
+
+// > Process plugins into a single JS file inside 'assets/js' folder
+gulp.task('plugins', function(){
+	return gulp.src(config.plugins.src)
+		.pipe(sourcemaps.init())
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(concat('plugins.js'))
+		//.pipe(uglify())
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(config.plugins.dest))
+		.pipe(browserSync.reload({ stream:true }))
+		.pipe(notify({message: 'PLUGINS OK', onLast: true}));
 });
 
-gulp.task( 'default', ['watch'] );
+
+
+
+
+// > Process JS scripts into a single JS file inside 'assets/js' folder
+gulp.task('scripts', function(){
+	return gulp.src(config.scripts.src)
+		.pipe(sourcemaps.init())
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(concat('main.js'))
+		//.pipe(uglify())
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(config.scripts.dest))
+		.pipe(browserSync.reload({ stream:true }))
+		.pipe(notify({message: 'JS OK', onLast: true}));
+});
+
+
+
+
+
+// > Create a development server with BrowserSync
+gulp.task('serve', ['default'], function () {
+	browserSync.init({
+		server : {
+			baseDir: "public"
+		},
+		ghostMode: false,
+		online: true
+	});
+
+	gulp.watch(config.watch.styles, ['styles']);
+	gulp.watch(config.watch.scripts, ['scripts', 'plugins']);
+	gulp.watch(config.watch.templates, ['templates']);
+});
+
+
+
+
+
+// > Force a browser page reload
+gulp.task('bs-reload', function () {
+	browserSync.reload();
+});
+
+
+
+
+
+// > Generate 'public' folder
+gulp.task('default', function (cb) {
+	runSequence('styles', ['templates','plugins', 'scripts'], cb);
+});

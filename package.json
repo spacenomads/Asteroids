@@ -1,33 +1,36 @@
 {
-  "name": "lemonade-kit",
-  "version": "1.0.0",
-  "description": "This is my gulp-ready-compass-free-website-starter-kit based on html5Boilerplate and experience ;)",
-  "main": "index.php",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/oneeyedman/Lemonade-kit.git"
-  },
-  "author": "Carlos <hola@sidiostedalimones.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/oneeyedman/Lemonade-kit/issues"
-  },
-  "homepage": "https://github.com/oneeyedman/Lemonade-kit",
-  "devDependencies": {
-    "del": "^1.1.0",
-    "gulp": "^3.8.10",
-    "gulp-autoprefixer": "^2.1.0",
-    "gulp-combine-mq": "^0.3.1",
-    "gulp-concat": "^2.4.3",
-    "gulp-jade": "^1.0.1",
-    "gulp-livereload": "^3.5.0",
-    "gulp-minify-css": "^0.4.2",
-    "gulp-notify": "^2.1.0",
-    "gulp-plumber": "^0.6.6",
-    "gulp-rename": "^1.2.0",
-    "gulp-replace": "^0.5.2",
-    "gulp-ruby-sass": "^1.0.1",
-    "gulp-uglify": "^1.1.0",
-    "gulp-util": "^3.0.2"
-  }
+	"name": "Asteroids",
+	"version": "1.0.0",
+	"description": "Space Nomads' web starter kit",
+	"main": "gulpfile.js",
+	"dependencies": {},
+	"devDependencies": {},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com:spacenomads/Asteroids.git"
+	},
+	"author": "Space Nomads",
+	"license": "ISC",
+	"homepage": "https://github.com/spacenomads/Asteroids",
+	"dependencies": {
+		"browser-sync": "^2.13.0",
+		"del": "*",
+		"gulp-autoprefixer": "*",
+		"gulp-clean-css": "*",
+		"gulp-combine-mq": "^0.4.0",
+		"gulp-concat": "*",
+		"gulp-jade": "*",
+		"gulp-notify": "*",
+		"gulp-plumber": "*",
+		"gulp-rename": "*",
+		"gulp-sass": "*",
+		"gulp-sourcemaps": "*",
+		"gulp-uglify": "*",
+		"gulp-util": "*",
+		"gulp": "^3.9.1",
+		"run-sequence": "*"
+	}
 }
