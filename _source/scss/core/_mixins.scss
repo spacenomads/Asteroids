@@ -1,0 +1,42 @@
+@mixin fontFace($family ,$src , $weight:normal, $style: normal){
+	@font-face {
+		font-family: $family;
+		src: url($src + '.eot');
+		src: url($src + '.eot?#iefix') format('embedded-opentype'),
+			url($src + '.woff') format('woff'),
+			url($src + '.ttf') format('truetype');
+			//url('$src.svg##{$family}') format('svg');
+		font-style: $style;
+		font-weight: $weight;
+	}
+}
+
+@mixin mq($pixels, $width:min-width){
+	@media screen and ( $width: em( $pixels ) ){
+	//@media screen and ($width: #{$pixels}px){
+		@content;
+	}
+}
+
+@mixin centerer {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin snitch() {
+	.snitch {
+		background: $color_black;
+		border-radius: 0 0 3px 3px;
+		color: $color_white;
+		font-family: arial, sans-serif;
+		left: 50%;
+		opacity: .3;
+		padding: .5em 1em;
+		position: fixed;
+		top: 0;
+		transform: translateX(-50%);
+		z-index: 666;
+	}
+}

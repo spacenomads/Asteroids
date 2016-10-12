@@ -1,41 +1,42 @@
-@import 'normalize.min';
-@import 'mixins';
-@import 'extends';
-@import 'settings';
-
-/*
-* #INDEX
-*
-* LAYOUT
-* EU COOKIE LAW
-*/
-
-
-
-
-
-/*
-* > LAYOUT
- */
-@include snitch();
-.wrapper {
-	margin: 0 em( 30 );
-	@include mq( $d_sitewidth + (30 * 2) ) {
-		max-width: em( $d_sitewidth );
-		margin: 0 auto;
-	}
-}
+// > IMPORTS
+// >> Core
+@import 'core/variables';
+@import 'core/functions';
+@import 'core/mixins';
+@import 'core/placeholders';
+// ----------------------
+@import 'core/common';
+@import 'core/fonts';
+//@import 'core/debug';
 
 
 
 
 
-/*
-* > EU COOKIE LAW
- */
-#cookie_alert {
-	display: none;
-	&.shown {
-		display: block;
-	}
-}
+// >> Vendors
+
+
+
+
+
+// >> Elements
+@import 'elements/tipograhpy';
+@import 'elements/buttons';
+@import 'elements/navigation';
+@import 'elements/forms';
+
+
+
+
+
+// >> Layout
+@import 'layout/layout';
+@import 'layout/header';
+@import 'layout/footer';
+
+
+
+
+
+// >> Pages
+@import 'pages/home';
