@@ -23,7 +23,7 @@ Según **la finalidad para la que se traten los datos obtenidos**:
 - **Cookies publicitarias**: aquéllas que permiten la gestión de los espacios publicitarios en la página web, aplicación o plataforma desde la que se presta el servicio solicitado.
 - **Cookies de publicidad comportamental**: aquellas que almacenan información del comportamiento de los usuarios obtenida a través de los hábitos de navegación del usuario, lo que permite desarrollar un perfil específico para mostrar publicidad.
 
-## ¿Qué cookies utilizamos en `[spacenomads.com]`?
+## ¿Qué cookies utilizamos en `[DOMINIO DEL CLIENTE]`?
 
 Cookies de análisis para el seguimiento y análisis estadístico del comportamiento del conjunto de los usuarios. Esta información es anónima, y solo la necesitamos para fines estadísticos.
 
