@@ -18,15 +18,25 @@
 	}
 }
 
-@mixin snitch(){
-	.snitch{
-		background:$color_black;
-		color:$color_white;
-		left:1em;
-		opacity:.2;
-		padding:.5em 1em;
-		position:fixed;
-		top:0em;
-		z-index:666;
+@mixin centerer {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin snitch() {
+	.snitch {
+		background: $color_black;
+		border-radius: 0 0 3px 3px;
+		color: $color_white;
+		font-family: arial, sans-serif;
+		left: 50%;
+		opacity: .3;
+		padding: .5em 1em;
+		position: fixed;
+		top: 0;
+		transform: translateX(-50%);
+		z-index: 666;
 	}
 }

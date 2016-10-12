@@ -1,27 +1,12 @@
-/* the humans responsible & colophon */
+﻿/* the humans responsible & colophon */
 /* humanstxt.org */
 
 
 /* TEAM */
-Frontend: Abel Cabans
-Twitter: @abelcabans
-Contact: abel [at] spacenomads DOT com
-From: Barcelona, Catalonia, Spain
-
-Frontend: Carlos Mañas
-Twitter: @oneeneydman
-Contact: carlos [at] spacenomads DOT com
-From: Madrid, Spain
-
 
 
 /* THANKS */
 
 
 /* SITE */
-Coded:
-Language:
-Doctype:
-Components:
-Tools:
-Server:
+

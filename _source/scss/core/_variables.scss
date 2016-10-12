@@ -1,29 +1,71 @@
 // Colors
+$color_pending: pink;
+$color_focus: deeppink;
+$color_focus_alt: yellow;
+
 $color_white: #fff;
 $color_black: #000;
-$color_blue: #07c;
-$color_red: #dd3519;
+$color_pink: #E40851;
+$color_grey: #DBDBDB;
 
-$color_title: $color_black;
-$color_text: $color_black;
-$color_link: $color_blue;
-$color_alert: $color_red;
+
+
+$color_title: $color_pink;
+$color_text: $color_pink;
+$color_link: $color_pink;
+
+
 
 // dimensions
-$dim_sitewidth: 960;
-$dim_radius: 3px;
+$dim_sitewidth: 1120;
+$dim_radius: 0;
+$dim_margin: (
+	320: 20,
+	768: 18,
+	1024: 50,
+	1280: 80);
+
+
+
+
 
 // Fonts
-$font_fallback: arial, sans-serif;
+$font_fallback: serif;
+$font_text: 'PT Serif', $font_fallback;
 $font_size: 16;
 $font_line_height: 130%;
+$font_regular: 400;
+$font_bold: 700;
+
+
+
+
 
 // Effects
 $time_transition: .5s;
 
+
+
+
+
 // Paths
 $theme: '../img/layout/';
 
-// Levels
-$levels: background, header, cover, content, menu, cookies;
 
+
+
+
+// Levels
+$levels: background, content, header, menu, cookies;
+
+
+
+
+
+// BreakPoints
+$bp_mobile: 320;
+$bp_mobile_alt: 360;
+$bp_tablet: 768;
+$bp_mobile_menu_limit: 1024;
+$bp_desktop: 1024;
+$bp_desktop_hd: $dim_sitewidth + map-get( $dim_margin, 1280)*2;

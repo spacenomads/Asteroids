@@ -1,0 +1,39 @@
+{
+	"templates": {
+		"src": [
+			"_source/templates/**/*.pug",
+			"!_source/templates/partials/*.pug"
+		],
+		"dest": "public"
+	},
+	"styles": {
+		"src": "_source/scss/*.s*ss",
+		"dest": "public/assets/css"
+	},
+	"plugins": {
+		"src": [
+			"_source/js/plugins/_plugins.js",
+			"_source/js/plugins/jquery.cookie.js",
+			"_source/js/plugins/jquery.width_snitch.min.js",
+			"_source/js/plugins/breakpoints.js"
+		],
+		"dest": "public/assets/js/"
+	},
+	"scripts": {
+		"src": [
+			"_source/js/main.js"
+		],
+		"dest": "public/assets/js/"
+	},
+	"watch": {
+		"scripts": [
+			"_source/js/**/*.js"
+		],
+		"styles": [
+			"_source/scss/**/*.{scss,sass,css}"
+		],
+		"templates": [
+			"_source/templates/**/*.pug"
+		]
+	}
+}

@@ -1,80 +1,39 @@
-# Asteroids - Space Nomads blank starter kit
-Yep, our gulp-ready-prepros-firendly-jade-lover-sass-powered-humanstxt-included html starterkit!
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-Things you need to know about our way to develop, we use 4 spaces for a tab and JADE to get clean html to use.
+- [Asteroids](#asteroids)
+	- [JS](#js)
+	- [TODO](#todo)
+	- [Request a feature](#request-a-feature)
 
-<!-- MarkdownTOC depth=3 autolink=true autoanchor=true -->
+<!-- /TOC -->
+# Asteroids
+Ahoy! This is our all-new/all-old web starter kit. Use it well!
 
-- [Project structure](#project structure)
-- [Gulp dependencies](#gulp dependencies)
-- [Request a feature](#request a feature)
-- [TODO](#todo)
 
-<!-- /MarkdownTOC -->
+## JS
+**Asteorids** uses JQuery and two JS files, main.js and plugins.js, located before the `</body>` tag. A custom build of Modernizr is loaded in the head section of the page.
 
-<a name="project structure"></a>
-## Project structure
+| Item | Version | Downloaded from |
+| ------ | ------- | --- |
+| JQuery | v3.1.1 | https://jquery.com
+| Modernizr | v2.8.3 | https://modernizr.com
+| Width_snitch | v1 | https://github.com/oneeyedman/Width-Snitch/
+| Breakpoints | v1.0 | https://github.com/xoxco/breakpoints
+| jQuery Cookie Plugin | v1.4.0 | https://github.com/carhartl/jquery-cookie
 
-```
-/_source
-	/scss
-		/core
-			_common.scss
-			_fonts.scss
-			_functions.scss
-			_mixins.scss
-			_placeholders.scss
-			_reset.scss
-			_variables.scss
-		/elements
-			_buttons.scss
-			_form.scss
-			_navigation.scss
-			_typography.scss
-			...
-		/layout
-			_header.scss
-			_footer.scss
-			_grid.scss
-			...
-		/pages
-			_home.scss
-			...
-		/vendors
-			_jbox.scss
-			_slick.scss
-			...
-		main.scss
-	/js
-		/plugins
-		main.js
-		plugins.js
-	/jade
-		index.jade
-/public
-	/assets
-		/css
-		/fonts
-		/img
-			/layout
-				/partials
-		/js
-			main.js
-			plugins.js
-```
-
-<a name="gulp dependencies"></a>
-## Gulp dependencies
-
-<a name="request a feature"></a>
-## Request a feature
-
-<a name="todo"></a>
 ## TODO
+So, what is next?
 
-- [ ] Combine JS files into one file
-- [ ] Development branch
-- [ ] EU Cookie plugin
-- [ ] We ♥ Gulp
+- [ ] Favicon
+- [ ] Mobile icons + PSD sorce file
+- [x] EU Cookie plugin
+- [x] We ♥ Gulp
+- [x] Pug rocks!
+- [x] All css resets must die! #NoResetForTheWin
+- [x] Development branch
 - [x] Ignore Prepros config file
+- [ ] ~~Jade files~~
+- [ ] ~~Combine JS files into one file~~
 
+## Request a feature
+Do you miss something? Feel free to request a feature or contribute to make it better ;)

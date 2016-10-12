@@ -1,0 +1,37 @@
+{
+	"name": "Asteroids",
+	"version": "1.0.0",
+	"description": "Space Nomads' web starter kit",
+	"main": "gulpfile.js",
+	"dependencies": {},
+	"devDependencies": {},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com:spacenomads/Asteroids.git"
+	},
+	"author": "Space Nomads",
+	"license": "ISC",
+	"homepage": "https://github.com/spacenomads/Asteroids",
+	"dependencies": {
+		"browser-sync": "^2.13.0",
+		"del": "*",
+		"gulp-autoprefixer": "*",
+		"gulp-clean-css": "*",
+		"gulp-combine-mq": "^0.4.0",
+		"gulp-concat": "*",
+		"gulp-jade": "*",
+		"gulp-pug": "*",
+		"gulp-notify": "*",
+		"gulp-plumber": "*",
+		"gulp-rename": "*",
+		"gulp-sass": "*",
+		"gulp-sourcemaps": "*",
+		"gulp-uglify": "*",
+		"gulp-util": "*",
+		"gulp": "^3.9.1",
+		"run-sequence": "*"
+	}
+}

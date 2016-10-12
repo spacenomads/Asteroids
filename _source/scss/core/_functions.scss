@@ -1,6 +1,9 @@
 @function em($pixels, $context: $font_size) {
     @return $pixels/$context*1em;
 }
+@function rem($pixels, $context: $font_size) {
+    @return $pixels/$context*1rem;
+}
 
 @function img($image, $path: $theme){
     @return url( $path + $image  );

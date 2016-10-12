@@ -1,61 +1,42 @@
-/*
-* #INDEX
-*
-* IMPORTS
-* - Core
-* - Elements
-* - Layout
-* - Pages
-* - Vendors
-*/
-
-
-
-
-/*
-* > IMPORTS
-* >> Core
- */
-@import 'core/common';
-@import 'core/fonts';
+// > IMPORTS
+// >> Core
+@import 'core/variables';
 @import 'core/functions';
 @import 'core/mixins';
 @import 'core/placeholders';
-@import 'core/variables';
+// ----------------------
+@import 'core/common';
+@import 'core/fonts';
+//@import 'core/debug';
 
 
 
 
-/*
-* >> Elements
-*/
-@import 'elements/buttons';
-@import 'elements/forms';
-@import 'elements/navigation';
+
+// >> Vendors
+
+
+
+
+
+// >> Elements
 @import 'elements/tipograhpy';
+@import 'elements/buttons';
+@import 'elements/navigation';
+@import 'elements/forms';
 
 
 
 
-/*
-* >> Layout
-*/
-@import 'layout/footer';
+
+// >> Layout
 @import 'layout/layout';
 @import 'layout/header';
+@import 'layout/footer';
 
 
 
 
-/*
-* >> Pages
-*/
+
+// >> Pages
 @import 'pages/home';
-
-
-
-
-/*
-* >> Vendors
-*/
-@import 'vendors/jBox';
