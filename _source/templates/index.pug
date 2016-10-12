@@ -1,27 +1,29 @@
 - var lang = 'es'
 - var dev = true
+- var template = 'tpl__home'
+- var pageTitle = 'Asteroids homepage'
 doctype html
-include partials/_cc.pug
-head
-	meta(charset="utf-8")
-	title Document title
-	meta(name="description")
-	include partials/_head.pug
-body(class = "tpl_home home", class=dev ? '_dev' : '')
-	.page
+html( class="no-js", lang=lang)
+	head
+		meta(charset="utf-8")
+		title=pageTitle
+		meta(name="description", content="")
+		include partials/_head.pug
+	body(class=template, class=dev ? '_dev' : '')
+		.page
 
-		include partials/_header.pug
+			include partials/_header.pug
 
-		include partials/_menu.pug
+			include partials/_menu.pug
 
-		main#main.main_container(role = "main")
-			.wrapper
-				p (Main content)
+			main#main.page__main
+				.wrapper
+					p (Main content)
 
-		include partials/_footer.pug
+			include partials/_footer.pug
 
-	<!-- .page -->
+		<!-- .page -->
 
-	include partials/_js.pug
+		include partials/_js.pug
 
-	include partials/_tag.pug
+		include partials/_cookies.pug
