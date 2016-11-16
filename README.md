@@ -26,8 +26,9 @@ So, what is next?
 
 - [ ] Favicon
 - [ ] Mobile icons + PSD sorce file
-- [ ] Csscomb
-- [ ] Separate source and dist folder
+- [x] Csscomb
+- [x] Separate source and dist folder
+- [ ] Process only modified files
 - [x] EU Cookie plugin
 - [x] We ♥ Gulp
 - [x] Pug rocks!
