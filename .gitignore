@@ -38,3 +38,6 @@ Icon
 *.log
 *.sql
 *.sqlite
+
+# Public folder
+public
