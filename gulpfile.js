@@ -1,23 +1,23 @@
-var
-	autoprefixer = require('gulp-autoprefixer'),
-	browserSync  = require('browser-sync'),
-	combineMq    = require('gulp-combine-mq'),
-	concat       = require('gulp-concat'),
-	config       = require('./config.json'),
-	cssminifiy   = require('gulp-clean-css'),
-	del          = require('del'),
-	gulp         = require('gulp'),
-	gutil        = require('gulp-util'),
-	jade         = require('gulp-jade'),
-	notify       = require('gulp-notify'),
-	plumber      = require('gulp-plumber'),
-	pug          = require('gulp-pug')
-	reload       = browserSync.reload,
-	rename       = require('gulp-rename'),
-	runSequence  = require('run-sequence'),
-	sass         = require('gulp-sass'),
-	sourcemaps   = require('gulp-sourcemaps'),
-	uglify       = require('gulp-uglify');
+var autoprefixer = require('gulp-autoprefixer');
+var browserSync  = require('browser-sync');
+var cache        = require('gulp-cached');
+var combineMq    = require('gulp-combine-mq');
+var concat       = require('gulp-concat');
+var config       = require('./config.json');
+var cssminifiy   = require('gulp-clean-css');
+var del          = require('del');
+var gulp         = require('gulp');
+var gutil        = require('gulp-util');
+var jade         = require('gulp-jade');
+var notify       = require('gulp-notify');
+var plumber      = require('gulp-plumber');
+var pug          = require('gulp-pug');
+var reload       = browserSync.reload;
+var rename       = require('gulp-rename');
+var runSequence  = require('run-sequence');
+var sass         = require('gulp-sass');
+var sourcemaps   = require('gulp-sourcemaps');
+var uglify       = require('gulp-uglify');
 
 
 
@@ -66,14 +66,26 @@ gulp.task('humansTXT', function () {
 
 
 
-// > Process .JADE files into 'public' folder
+// > Process .PUG files into 'public' folder
 gulp.task( 'templates' , function(cb) {
 	return gulp.src(config.templates.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(cache('templatesCache'))
 		.pipe(pug({}))
 		.pipe(gulp.dest(config.templates.dest))
-		.pipe(browserSync.reload({ stream:true }))
 		.pipe(notify({message: 'Templates OK', onLast: true}));
+});
+
+
+
+
+
+// > Process partials .Pug files into 'public' folder
+gulp.task( 'templatePartials' , function(cb) {
+	return gulp.src(config.templates.src)
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(pug({}))
+		.pipe(gulp.dest(config.templates.dest));
 });
 
 
@@ -152,10 +164,12 @@ gulp.task('serve', ['default'], function () {
 	});
 	gulp.watch(config.watch.images, ['bs-reload', ['images']]);
 	gulp.watch(config.watch.vendorJS, ['bs-reload', ['vendor-js']]);
-	gulp.watch(config.watch.humansTXT, ['bs-reload', ['humansTXT']]);
+	gulp.watch(config.watch.humansTXT, ['humansTXT']);
 	gulp.watch(config.watch.styles, ['styles']);
 	gulp.watch(config.watch.scripts, ['scripts', 'plugins']);
 	gulp.watch(config.watch.templates, ['templates']);
+	gulp.watch(config.watch.templatePartials, ['templatePartials']);
+	gulp.watch(config.watch.html, ['bs-reload']);
 });
 
 

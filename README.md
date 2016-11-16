@@ -26,9 +26,12 @@ So, what is next?
 
 - [ ] Favicon
 - [ ] Mobile icons + PSD sorce file
+- [ ] Gulp task to generate minified JS files
+- [ ] Gulp task to generate a timestamped deploy folder
+- [ ] Gulp task to zip the deploy folder
 - [x] Csscomb
 - [x] Separate source and dist folder
-- [ ] Process only modified files
+- [x] Process only modified files
 - [x] EU Cookie plugin
 - [x] We ♥ Gulp
 - [x] Pug rocks!
