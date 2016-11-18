@@ -29,6 +29,8 @@ So, what is next?
 - [ ] Gulp task to generate minified JS files
 - [ ] Gulp task to generate a timestamped deploy folder
 - [ ] Gulp task to zip the deploy folder
+- [x] SVG files
+- [x] JS Objects
 - [x] Csscomb
 - [x] Separate source and dist folder
 - [x] Process only modified files

@@ -33,6 +33,10 @@
 	},
 	"scripts": {
 		"src": [
+			"_source/js/_sn.js",
+			"_source/js/_sn.cache.js",
+			"_source/js/_sn.cookies.js",
+			"_source/js/_sn.externallinks.js",
 			"_source/js/main.js"
 		],
 		"dest": "public/assets/js/"
