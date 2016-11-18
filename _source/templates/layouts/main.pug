@@ -1,0 +1,29 @@
+block vars
+	- var lang = 'es'
+	- var template = 'tpl__home'
+	- var pageTitle = 'Asteroids homepage'
+
+doctype html
+html( class="no-js", lang=lang)
+	head
+		meta(charset="utf-8")
+		title=pageTitle
+		meta(name="description", content="")
+		include ../partials/_head.pug
+	body(class=template)
+		.page
+
+			include ../partials/_header.pug
+
+			include ../partials/_menu.pug
+
+			main#main.page__main
+				block main
+
+			include ../partials/_footer.pug
+
+		<!-- .page -->
+
+		include ../partials/_js.pug
+
+		include ../partials/_cookies.pug

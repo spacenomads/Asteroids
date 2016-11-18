@@ -14,7 +14,8 @@
 	"templates": {
 		"src": [
 			"_source/templates/**/*.pug",
-			"!_source/templates/partials/*.pug"
+			"!_source/templates/partials/*.pug",
+			"!_source/templates/layouts/*.pug"
 		],
 		"dest": "public"
 	},
@@ -62,7 +63,8 @@
 			"!_source/templates/partials/*.pug"
 		],
 		"templatePartials": [
-			"_source/templates/partials/*.pug"
+			"_source/templates/partials/*.pug",
+			"_source/templates/layouts/*.pug"
 		],
 		"html": [
 			"public/**/*.html",
