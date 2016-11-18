@@ -1,6 +1,6 @@
 {
 	"images": {
-		"src": "_source/assets/img/**/*.{gif,jpg,jpeg,png}",
+		"src": "_source/assets/img/**/*.{gif,jpg,jpeg,png,svg}",
 		"dest": "public/assets/img"
 	},
 	"vendorJS": {
@@ -39,7 +39,7 @@
 	},
 	"watch": {
 		"images": [
-			"_source/assets/img/**/*.{gif,jpg,jpeg,png}"
+			"_source/assets/img/**/*.{gif,jpg,jpeg,png,svg}"
 		],
 		"vendorJS": [
 			"_source/assets/js/vendor/*.js"
