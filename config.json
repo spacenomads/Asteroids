@@ -1,6 +1,6 @@
 {
 	"images": {
-		"src": "_source/assets/img/**/*.{gif,jpg,jpeg,png}",
+		"src": "_source/assets/img/**/*.{gif,jpg,jpeg,png,svg}",
 		"dest": "public/assets/img"
 	},
 	"vendorJS": {
@@ -14,7 +14,8 @@
 	"templates": {
 		"src": [
 			"_source/templates/**/*.pug",
-			"!_source/templates/partials/*.pug"
+			"!_source/templates/partials/*.pug",
+			"!_source/templates/layouts/*.pug"
 		],
 		"dest": "public"
 	},
@@ -33,13 +34,17 @@
 	},
 	"scripts": {
 		"src": [
+			"_source/js/_sn.js",
+			"_source/js/_sn.cache.js",
+			"_source/js/_sn.cookies.js",
+			"_source/js/_sn.externallinks.js",
 			"_source/js/main.js"
 		],
 		"dest": "public/assets/js/"
 	},
 	"watch": {
 		"images": [
-			"_source/assets/img/**/*.{gif,jpg,jpeg,png}"
+			"_source/assets/img/**/*.{gif,jpg,jpeg,png,svg}"
 		],
 		"vendorJS": [
 			"_source/assets/js/vendor/*.js"
@@ -58,7 +63,8 @@
 			"!_source/templates/partials/*.pug"
 		],
 		"templatePartials": [
-			"_source/templates/partials/*.pug"
+			"_source/templates/partials/*.pug",
+			"_source/templates/layouts/*.pug"
 		],
 		"html": [
 			"public/**/*.html",
