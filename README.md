@@ -3,9 +3,13 @@
 - [Asteroids](#asteroids)
 	- [JS](#js)
 	- [TODO](#todo)
+	- [Changelog](#changelog)
+		- [v1.1.2](#v112)
+		- [~v1.1.1](#v111)
 	- [Request a feature](#request-a-feature)
 
 <!-- /TOC -->
+
 # Asteroids
 Ahoy! This is our all-new/all-old web starter kit. Use it well!
 
@@ -29,6 +33,7 @@ So, what is next?
 - [ ] Gulp task to generate minified JS files
 - [ ] Gulp task to generate a timestamped deploy folder
 - [ ] Gulp task to zip the deploy folder
+- [ ] Delete prepros configuration file
 
 
 ## Changelog
