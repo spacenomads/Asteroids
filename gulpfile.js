@@ -34,6 +34,17 @@ var onError = function (err) {
 
 
 // > Copy Images
+gulp.task('docs', function () {
+	return gulp.src(config.docs.src)
+		.pipe(gulp.dest(config.docs.dest))
+		.pipe(notify({message: '>> ✔︎ Docs', onLast: true}));
+});
+
+
+
+
+
+// > Copy Images
 gulp.task('images', function () {
 	return gulp.src(config.images.src)
 		.pipe(gulp.dest(config.images.dest))

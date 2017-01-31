@@ -1,4 +1,8 @@
 {
+	"docs": {
+		"src": "_source/docs/_book/**.*",
+		"dest": "public/docs/"
+	},
 	"images": {
 		"src": "_source/assets/img/**/*.{gif,jpg,jpeg,png,svg}",
 		"dest": "public/assets/img"
