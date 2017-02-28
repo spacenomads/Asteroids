@@ -165,7 +165,7 @@ gulp.task('scripts', function(){
 
 
 // > Create a development server with BrowserSync
-gulp.task('serve', ['default'], function () {
+gulp.task('go', ['default'], function () {
 	browserSync.init({
 		server : {
 			baseDir: "public"

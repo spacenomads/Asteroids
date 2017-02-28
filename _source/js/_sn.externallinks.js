@@ -12,7 +12,7 @@ SN.externalLinks = {
 		$externalLinks.each(function(index, el) {
 			$(this).attr('target', '_blank');
 			if (!$(this).attr('rel')) {
-				$(this).attr('rel', 'external');
+				$(this).attr('rel', 'external noopener noreferrer');
 			}
 		});
 	}
