@@ -4,7 +4,6 @@
 @import 'core/functions';
 @import 'core/mixins';
 @import 'core/placeholders';
-// ----------------------
 @import 'core/common';
 @import 'core/fonts';
 //@import 'core/debug';
@@ -19,11 +18,11 @@
 
 
 
-// >> Elements
-@import 'elements/tipograhpy';
-@import 'elements/buttons';
-@import 'elements/navigation';
-@import 'elements/forms';
+// >> Components
+@import 'components/tipograhpy';
+@import 'components/buttons';
+@import 'components/navigation';
+@import 'components/forms';
 
 
 

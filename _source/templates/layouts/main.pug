@@ -1,16 +1,18 @@
 block vars
 	- var lang = 'es'
 	- var template = 'tpl__home'
+	- var page = 'home'
 	- var pageTitle = 'Asteroids homepage'
+
 
 doctype html
 html( class="no-js", lang=lang)
 	head
 		meta(charset="utf-8")
-		title=pageTitle
+		title= pageTitle
 		meta(name="description", content="")
 		include ../partials/_head.pug
-	body(class=template)
+	body(class= template, class=page)
 		.page
 
 			include ../partials/_header.pug
