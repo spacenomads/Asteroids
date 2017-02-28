@@ -5,22 +5,11 @@ SN.init = function() {
 	SN.cache.init();
 	SN.externalLinks.init();
 	SN.cookies.init();
+	SN.snitch.init(true);
 }
 
 $(function() {
 
 	SN.init();
 
-	var responsiveDebug = true;
-
-
-
-
-
-	// > Responsive snitch
-	if ( responsiveDebug ) {
-		SN.cache.$body.width_snitch({
-			style:{}
-		})
-	}
 });
