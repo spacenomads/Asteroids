@@ -17,9 +17,6 @@
   ],
   "license": "CC0 1.0 Universal",
   "ignore": [
-    "!.gitignore",
-    "!.csscomb.json",
-    "**/.*",
     "node_modules",
     "bower_components",
     "test",
