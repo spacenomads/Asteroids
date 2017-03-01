@@ -16,23 +16,22 @@
 	"license": "ISC",
 	"homepage": "https://github.com/spacenomads/Asteroids",
 	"dependencies": {
-		"browser-sync": "^2.13.0",
+		"browser-sync": "*",
 		"del": "*",
 		"gulp-autoprefixer": "*",
-		"gulp-clean-css": "*",
-		"gulp-combine-mq": "^0.4.0",
 		"gulp-cached": "*",
+		"gulp-clean-css": "*",
+		"gulp-combine-mq": "*",
 		"gulp-concat": "*",
-		"gulp-jade": "*",
-		"gulp-pug": "*",
 		"gulp-notify": "*",
 		"gulp-plumber": "*",
+		"gulp-pug": "*",
 		"gulp-rename": "*",
 		"gulp-sass": "*",
 		"gulp-sourcemaps": "*",
 		"gulp-uglify": "*",
 		"gulp-util": "*",
-		"gulp": "^3.9.1",
+		"gulp": "*",
 		"run-sequence": "*"
 	}
 }

@@ -8,7 +8,6 @@ var cssminifiy   = require('gulp-clean-css');
 var del          = require('del');
 var gulp         = require('gulp');
 var gutil        = require('gulp-util');
-var jade         = require('gulp-jade');
 var notify       = require('gulp-notify');
 var plumber      = require('gulp-plumber');
 var pug          = require('gulp-pug');
@@ -32,14 +31,14 @@ var onError = function (err) {
 
 
 
-
+/*
 // > Copy Images
 gulp.task('docs', function () {
 	return gulp.src(config.docs.src)
 		.pipe(gulp.dest(config.docs.dest))
 		.pipe(notify({message: '>> ✔︎ Docs', onLast: true}));
 });
-
+*/
 
 
 
