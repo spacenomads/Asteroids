@@ -1,4 +1,4 @@
-@mixin fontFace($family ,$src , $weight:normal, $style: normal){
+@mixin fontFace( $family ,$src , $weight:normal, $style: normal ){
 	@font-face {
 		font-family: $family;
 		src: url($src + '.eot');
@@ -11,17 +11,17 @@
 	}
 }
 
-@mixin mq($pixels, $width:min-width){
+@mixin mq( $pixels, $width:min-width ){
 	@media screen and ( $width: em( $pixels ) ){
 	//@media screen and ($width: #{$pixels}px){
 		@content;
 	}
 }
 
-@mixin centerer {
+@mixin absoluteCenterMe {
+	left: 50%;
 	position: absolute;
 	top: 50%;
-	left: 50%;
 	transform: translate(-50%, -50%);
 }
 
@@ -39,4 +39,9 @@
 		transform: translateX(-50%);
 		z-index: 666;
 	}
+}
+
+@mixin t( $fontSize, $lineHeight ) {
+	font-size: rem( $fontSize );
+	line-height: lh( $lineHeight, $fontSize );
 }

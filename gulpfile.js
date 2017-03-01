@@ -8,7 +8,6 @@ var cssminifiy   = require('gulp-clean-css');
 var del          = require('del');
 var gulp         = require('gulp');
 var gutil        = require('gulp-util');
-var jade         = require('gulp-jade');
 var notify       = require('gulp-notify');
 var plumber      = require('gulp-plumber');
 var pug          = require('gulp-pug');
@@ -29,6 +28,17 @@ var onError = function (err) {
 	console.log(err);
 };
 
+
+
+
+/*
+// > Copy Images
+gulp.task('docs', function () {
+	return gulp.src(config.docs.src)
+		.pipe(gulp.dest(config.docs.dest))
+		.pipe(notify({message: '>> ✔︎ Docs', onLast: true}));
+});
+*/
 
 
 
@@ -154,7 +164,7 @@ gulp.task('scripts', function(){
 
 
 // > Create a development server with BrowserSync
-gulp.task('serve', ['default'], function () {
+gulp.task('go', ['default'], function () {
 	browserSync.init({
 		server : {
 			baseDir: "public"
