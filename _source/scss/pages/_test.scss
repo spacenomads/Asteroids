@@ -1,0 +1,31 @@
+.js__collapsible {
+	@extend %unlist;
+	margin: 2em 0;
+	border: 1px solid #aaa;
+}
+.js__collapsible-item {
+	& + .js__collapsible-item {
+		border-top: 1px solid #aaa;
+	}
+}
+.js__collapsible-label {
+	padding: 1em;
+	cursor: pointer;
+	&:hover {
+		background: cyan;
+	}
+}
+.js__collapsible-content {
+	background: #f4f5f6;
+	padding: 1em;
+}
+
+
+
+
+.js__collapsible--accordion {
+	border: 1px solid #666;
+	.js__collapsible-item {
+		border-color: #666
+	}
+}
