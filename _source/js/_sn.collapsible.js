@@ -38,6 +38,11 @@ SN.collapsible = {
 			$obj.find('.js__collapsible-item').eq( item ).children('.js__collapsible-content').slideDown('400').attr('aria-hidden', false).parent('.js__collapsible-item').addClass('js__collapsible-item--visible');
 		};
 
+		var foldThis = function($obj, item) {
+			$obj.find('.js__collapsible-item').eq( item ).children('.js__collapsible-content').slideUp('200').attr('aria-hidden', true).parent('.js__collapsible-item').removeClass('js__collapsible-item--visible');
+		};
+
+
 
 		/**
 		 * Initialize collapsible object
@@ -64,6 +69,7 @@ SN.collapsible = {
 
 		if ($collapsible.length) {
 
+			// > Each collapsible
 			$collapsible.each(function(index, el) {
 				var initialState = ($(this).attr('data-visible')) ? $(this).attr('data-visible') : SN.collapsible.visible;
 
@@ -77,27 +83,40 @@ SN.collapsible = {
 				adjustCollapsibleOnLoad( $(this), initialState);
 			});
 
+
+			// > Label click
 			$collapsibleLabel.on('click', function(event) {
 				event.preventDefault();
+				var $block = $(this).parents('.js__collapsible');
+				var prevItem;
+				var item = $(this).parents('.js__collapsible-item').data('item');
 
 				if ( $(this).parents('.js__collapsible').hasClass('js__collapsible--accordion') ) {
-					// Es acordeón? SI
+
+					// Is this an accordion block? YES
 					if ( $(this).parents('.js__collapsible-item').hasClass('js__collapsible-item--visible') ) {
-						// Está abierto? -> cerrar este
+						// I am already open -> Close me
+						foldThis( $block, item );
 					} else {
 						if ( $(this).parents('.js__collapsible').find('.js__collapsible-item--visible').length ) {
-							// Hay otro abierto? -> cerrarlo y abrir este
+							// Another item is already open -> Close it and open me, Alice
+							prevItem = $(this).parents('.js__collapsible').find('.js__collapsible-item--visible').data('item');
+							foldThis( $block, prevItem );
+							unfoldThis( $block, item );
 						} else {
-							// Todos cerrados? -> abrir este
+							// No item is open -> Open me
+							unfoldThis( $block, item );
 						}
 					}
 				} else {
-					// Es acordeón? NO
-						if ( $(this).parents('.js__collapsible-item').hasClass('js__collapsible-item--visible') ) {
-							// Está abierto? -> cerrar este
-						} else {
-							// Está cerrado? -> abrir este
-						}
+					// Is this an accordion block? NOPE
+					if ( $(this).parents('.js__collapsible-item').hasClass('js__collapsible-item--visible') ) {
+						// I am already open -> Close me
+						foldThis( $block, item );
+					} else {
+						// I am closed -> Open me
+						unfoldThis( $block, item );
+					}
 				}
 
 

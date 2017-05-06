@@ -13,13 +13,34 @@
 	cursor: pointer;
 	&:hover {
 		background: cyan;
+		& + .js__collapsible-content::after {
+			border-top-color: cyan;
+		}
 	}
 }
 .js__collapsible-content {
-	background: #f4f5f6;
+	background: #424242;
+	color: #fff;
 	padding: 1em;
+	position: relative;
+	overflow: hidden;
+	&::after {
+		content: '';
+		border: 8px solid transparent;
+		border-top-color: white;
+		position: absolute;
+		top: -15px;
+		left: 2em;
+		transition: top ease .3s;
+	}
 }
-
+.js__collapsible-item--visible {
+	.js__collapsible-content {
+		&::after {
+			top: 0;
+		}
+	}
+}
 
 
 
