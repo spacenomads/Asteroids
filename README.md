@@ -3,9 +3,6 @@
 - [Asteroids](#asteroids)
 	- [JS](#js)
 	- [TODO](#todo)
-	- [Changelog](#changelog)
-		- [v1.1.2](#v112)
-		- [~v1.1.1](#v111)
 	- [Request a feature](#request-a-feature)
 
 <!-- /TOC -->
@@ -19,8 +16,8 @@ Ahoy! This is our all-new/all-old web starter kit. Use it well!
 
 | Item | Version | Downloaded from |
 | ------ | ------- | --- |
-| JQuery | v3.1.1 | https://jquery.com
-| Modernizr | v2.8.3 | https://modernizr.com
+| JQuery | v3.2.1 | https://jquery.com
+| Modernizr | v3.5.0 | https://modernizr.com
 | Width_snitch | v1 | https://github.com/oneeyedman/Width-Snitch/
 | Breakpoints | v1.0 | https://github.com/xoxco/breakpoints
 | jQuery Cookie Plugin | v1.4.0 | https://github.com/carhartl/jquery-cookie
@@ -28,32 +25,8 @@ Ahoy! This is our all-new/all-old web starter kit. Use it well!
 ## TODO
 So, what is next?
 
-- [ ] Favicon
 - [ ] Mobile icons + PSD source file
-- [ ] Gulp task to generate minified JS files
 - [ ] Gulp task to generate a timestamped deploy folder
-- [ ] Gulp task to zip the deploy folder
-- [ ] Delete prepros configuration file
-
-
-## Changelog
-### v1.1.2
-- [x] PUG Layouts
-- [x] SVG files
-- [x] JS Objects
-
-### ~v1.1.1
-- [x] Csscomb
-- [x] Separate source and dist folder
-- [x] Process only modified files
-- [x] EU Cookie plugin
-- [x] We ♥ Gulp
-- [x] Pug rocks!
-- [x] All css resets must die! #NoResetForTheWin
-- [x] Development branch
-- [x] Ignore Prepros config file
-- [ ] ~~Jade files~~
-- [ ] ~~Combine JS files into one file~~
 
 ## Request a feature
 Do you miss something? Feel free to request a feature or contribute to make it better ;)

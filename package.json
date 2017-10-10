@@ -1,6 +1,6 @@
 {
 	"name": "Asteroids",
-	"version": "1.1.2",
+	"version": "1.1.6",
 	"description": "Space Nomads' web starter kit",
 	"main": "gulpfile.js",
 	"dependencies": {},
@@ -32,6 +32,7 @@
 		"gulp-uglify": "*",
 		"gulp-util": "*",
 		"gulp": "*",
-		"run-sequence": "*"
+		"run-sequence": "*",
+		"gulp-zip": "*"
 	}
 }
