@@ -1,6 +1,6 @@
 /**
  * SN.snitch
- * Show browser window real width, FYI.
+ * Show browser real width, FYI.
  *
  */
 

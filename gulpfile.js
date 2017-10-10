@@ -17,6 +17,7 @@ var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
+var zip          = require('gulp-zip');
 
 
 
@@ -31,14 +32,14 @@ var onError = function (err) {
 
 
 
-/*
-// > Copy Images
-gulp.task('docs', function () {
-	return gulp.src(config.docs.src)
-		.pipe(gulp.dest(config.docs.dest))
-		.pipe(notify({message: '>> ✔︎ Docs', onLast: true}));
+
+// > Copy Icons
+gulp.task('icons', function () {
+	return gulp.src(config.icons.src)
+		.pipe(gulp.dest(config.icons.dest))
+		.pipe(notify({message: '> Icons OK', onLast: true}));
 });
-*/
+
 
 
 
@@ -47,7 +48,7 @@ gulp.task('docs', function () {
 gulp.task('images', function () {
 	return gulp.src(config.images.src)
 		.pipe(gulp.dest(config.images.dest))
-		.pipe(notify({message: '>> ✔︎ Images', onLast: true}));
+		.pipe(notify({message: '> Images OK', onLast: true}));
 });
 
 
@@ -58,7 +59,7 @@ gulp.task('images', function () {
 gulp.task('vendor-js', function () {
 	return gulp.src(config.vendorJS.src)
 		.pipe(gulp.dest(config.vendorJS.dest))
-		.pipe(notify({message: '>> ✔︎ Vendor JS', onLast: true}));
+		.pipe(notify({message: '> Vendor JS OK', onLast: true}));
 });
 
 
@@ -69,7 +70,7 @@ gulp.task('vendor-js', function () {
 gulp.task('humansTXT', function () {
 	return gulp.src(config.humansTXT.src)
 		.pipe(gulp.dest(config.humansTXT.dest))
-		.pipe(notify({message: '>> ✔︎ Humans txt', onLast: true}));
+		.pipe(notify({message: '> HumansTXT OK', onLast: true}));
 });
 
 
@@ -81,9 +82,11 @@ gulp.task( 'templates' , function(cb) {
 	return gulp.src(config.templates.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(cache('templatesCache'))
-		.pipe(pug({}))
+		.pipe(pug({
+			pretty: '\t'
+		}))
 		.pipe(gulp.dest(config.templates.dest))
-		.pipe(notify({message: 'Templates OK', onLast: true}));
+		.pipe(notify({message: '> Templates OK', onLast: true}));
 });
 
 
@@ -94,8 +97,11 @@ gulp.task( 'templates' , function(cb) {
 gulp.task( 'templatePartials' , function(cb) {
 	return gulp.src(config.templates.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-		.pipe(pug({}))
-		.pipe(gulp.dest(config.templates.dest));
+		.pipe(pug({
+			pretty: '\t'
+		}))
+		.pipe(gulp.dest(config.templates.dest))
+		.pipe(notify({message: '> Complete templates OK', onLast: true}));
 });
 
 
@@ -104,6 +110,34 @@ gulp.task( 'templatePartials' , function(cb) {
 
 // > Process SASS/SCSS files to generate final css files in 'public' folder
 gulp.task( 'styles' , function(cb) {
+	return gulp.src(config.styles.src)
+		.pipe(sourcemaps.init())
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(sass({
+			outputStyle: 'extended',
+		}))
+		.pipe(combineMq({
+			beautify: true
+		}))
+		.pipe(autoprefixer({
+			browsers: [
+				'last 2 versions',
+				'ie >= 10'
+			],
+			cascade: false
+		}))
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(config.styles.dest))
+		.pipe(browserSync.reload({ stream:true }))
+		.pipe(notify({message: '> CSS OK', onLast: true}));
+});
+
+
+
+
+
+// > Process SASS/SCSS files to generate final css files in 'public' folder
+gulp.task( 'styles-min' , function(cb) {
 	return gulp.src(config.styles.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(sass({
@@ -119,10 +153,8 @@ gulp.task( 'styles' , function(cb) {
 			],
 			cascade: false
 		}))
-		.pipe(cssminifiy())
 		.pipe(gulp.dest(config.styles.dest))
-		.pipe(browserSync.reload({ stream:true }))
-		.pipe(notify({message: 'CSS OK', onLast: true}));
+		.pipe(notify({message: '> CSS MIN OK', onLast: true}));
 });
 
 
@@ -135,11 +167,23 @@ gulp.task('plugins', function(){
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(concat('plugins.js'))
-		//.pipe(uglify())
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(config.plugins.dest))
 		.pipe(browserSync.reload({ stream:true }))
 		.pipe(notify({message: 'PLUGINS OK', onLast: true}));
+});
+
+
+
+
+
+// > Process plugins into a single JS file inside 'assets/js' folder without sourcemaps
+gulp.task('plugins-clean', function(){
+	return gulp.src(config.plugins.src)
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(concat('plugins.js'))
+		.pipe(gulp.dest(config.plugins.dest))
+		.pipe(notify({message: 'PLUGINS CLEAN OK', onLast: true}));
 });
 
 
@@ -163,6 +207,20 @@ gulp.task('scripts', function(){
 
 
 
+// > Process JS scripts into a single minified JS file inside 'assets/js' folder
+gulp.task('scripts-min', function(){
+	return gulp.src(config.scripts.src)
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(concat('main.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest(config.scripts.dest))
+		.pipe(notify({message: 'JS MIN OK', onLast: true}));
+});
+
+
+
+
+
 // > Create a development server with BrowserSync
 gulp.task('go', ['default'], function () {
 	browserSync.init({
@@ -177,9 +235,8 @@ gulp.task('go', ['default'], function () {
 	gulp.watch(config.watch.humansTXT, ['humansTXT']);
 	gulp.watch(config.watch.styles, ['styles']);
 	gulp.watch(config.watch.scripts, ['scripts', 'plugins']);
-	gulp.watch(config.watch.templates, ['templates']);
-	gulp.watch(config.watch.templatePartials, ['templatePartials']);
-	gulp.watch(config.watch.html, ['bs-reload']);
+	gulp.watch(config.watch.templates, ['bs-reload', ['templates']]);
+	gulp.watch(config.watch.templatePartials, ['bs-reload', ['templatePartials']]);
 });
 
 
@@ -195,9 +252,29 @@ gulp.task('bs-reload', function () {
 
 
 
+// > ZIP the public folder
+gulp.task('zipit', ['deploy'], function() {
+	return gulp.src(config.zip.src)
+		.pipe(zip(config.zip.name))
+		.pipe(gulp.dest(config.zip.dest));
+});
+
+
+
+
+
 // > Generate 'public' folder
 gulp.task('default', ['clean'], function (cb) {
-	runSequence('styles', ['images', 'vendor-js', 'humansTXT', 'templates', 'plugins', 'scripts'], cb);
+	runSequence('styles', ['icons', 'images', 'vendor-js', 'humansTXT', 'templates', 'templatePartials', 'plugins', 'scripts'], cb);
+});
+
+
+
+
+
+// > Generate production-ready 'public' folder
+gulp.task('deploy', ['clean'], function (cb) {
+	runSequence('styles-min', ['icons', 'images', 'vendor-js', 'humansTXT', 'templates', 'templatePartials', 'plugins-clean', 'scripts-min'], cb);
 });
 
 

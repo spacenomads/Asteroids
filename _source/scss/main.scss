@@ -23,19 +23,12 @@
 @import 'components/buttons';
 @import 'components/navigation';
 @import 'components/forms';
-
-
-
-
-
-// >> Layout
-@import 'layout/layout';
-@import 'layout/header';
-@import 'layout/footer';
+@import 'components/layout';
+@import 'components/header';
+@import 'components/footer';
 
 
 
 
 
 // >> Pages
-@import 'pages/home';

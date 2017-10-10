@@ -1,7 +1,12 @@
 {
-	"docs": {
-		"src": "_source/docs/_book/**.*",
-		"dest": "public/docs/"
+	"zip": {
+		"src": "public/**/*.*",
+		"dest": "./",
+		"name": "project-name.zip"
+	},
+	"icons": {
+		"src": "_source/assets/icons/**.*",
+		"dest": "public"
 	},
 	"images": {
 		"src": "_source/assets/img/**/*.{gif,jpg,jpeg,png,svg}",

@@ -1,8 +1,6 @@
 /**
  * SN.Cache
  * Cache common objects
- *
- * @type {Object}
  */
 SN.cache = {
 	init : function(){
