@@ -1,14 +1,14 @@
 # Asteroids
 Ahoy! This is our all-new/all-old web starter kit. Use it well!
 <center>
-<img src="https://spacenomads.com/assets/img/projects/asteroids/asteroids-700.png" width="350">
+<img src="https://spacenomads.com/assets/img/projects/asteroids/asteroids-700.png" width="350" style="display:block;margin: 0 auto">
 </center>
 
 Asteroids includes a SASS, jQuery and [PUG](https://github.com/pugjs/pug), a super cool template engine.
 
 ## Quickstart
 Install [Node.js](https://nodejs.org/) and [Gulp](https://gulpjs.com) to run this starter kit.
-1. Download or clone the repository
+1. Download or clone the repository (You can download it with Bower: `$ bower install asteroids-kit`)
 2. Install the local dependencies with `$ npm install`
 3. Run the kit with `$ gulp go`
 
