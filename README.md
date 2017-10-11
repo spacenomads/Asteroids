@@ -54,7 +54,7 @@ The folder structure looks like:
 |   |   `- vendors
 |   `- templates
 |      |- layout
-|      `- partials|
+|      `- partials
 `- public
    `- assets
        |- css
