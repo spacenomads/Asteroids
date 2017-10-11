@@ -1,8 +1,8 @@
 # Asteroids
 Ahoy! This is our all-new/all-old web starter kit. Use it well!
-<center>
-<img src="https://spacenomads.com/assets/img/projects/asteroids/asteroids-700.png" width="350" style="display:block;margin: 0 auto">
-</center>
+<p style="text-align:center">
+<img src="https://spacenomads.com/assets/img/projects/asteroids/asteroids-700.png" width="350">
+</p>
 
 Asteroids includes a SASS, jQuery and [PUG](https://github.com/pugjs/pug), a super cool template engine.
 
