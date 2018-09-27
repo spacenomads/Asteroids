@@ -1,4 +1,0 @@
-/**
- * SN Object
- */
-var SN = {};
