@@ -72,10 +72,6 @@
 		"templates": [
 			"_source/templates/**/*.pug"
 		],
-		"templatePartials": [
-			"_source/templates/partials/**/*.pug",
-			"_source/templates/layouts/*.pug"
-		],
 		"html": [
 			"public/**/*.html",
 			"!public/assets"
