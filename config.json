@@ -23,7 +23,7 @@
 	"templates": {
 		"src": [
 			"_source/templates/**/*.pug",
-			"!_source/templates/partials/*.pug",
+			"!_source/templates/partials/**/*.pug",
 			"!_source/templates/layouts/*.pug"
 		],
 		"dest": "public"
@@ -50,7 +50,8 @@
 			"_source/js/_sn.snitch.js",
 			"_source/js/main.js"
 		],
-		"dest": "public/assets/js/"
+		"dest": "public/assets/js/",
+		"destName": "main.min.js"
 	},
 	"watch": {
 		"images": [
@@ -69,11 +70,10 @@
 			"_source/scss/**/*.{scss,sass,css}"
 		],
 		"templates": [
-			"_source/templates/**/*.pug",
-			"!_source/templates/partials/*.pug"
+			"_source/templates/**/*.pug"
 		],
 		"templatePartials": [
-			"_source/templates/partials/*.pug",
+			"_source/templates/partials/**/*.pug",
 			"_source/templates/layouts/*.pug"
 		],
 		"html": [

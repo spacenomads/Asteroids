@@ -12,4 +12,8 @@ $(function() {
 
 	SN.init();
 
+	console.log('yay 1');
+	console.log('yay 20');
+	console.log('yay 300');
+
 });
