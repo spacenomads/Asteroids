@@ -1,7 +1,6 @@
 const { src, dest, series, parallel, watch } = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
-const cache = require('gulp-cached');
 const combineMq = require('gulp-combine-mq');
 const concat = require('gulp-concat');
 const config = require('./config.json');
@@ -18,6 +17,37 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const zip = require('gulp-zip');
+
+
+
+
+
+// > Generate a cool timestamp (YYMMDD)
+const getTimestamp = function() {
+	const date = new Date();
+	const mm = ('0'+(date.getMonth()+1)).slice(-2)
+	const dd = ('0'+date.getUTCDate()).slice(-2);
+	const yy = date.getUTCFullYear().toString().substr(-2);
+	const timestamp = yy + mm + dd;
+
+	return timestamp;
+};
+
+
+
+
+
+// > Get a project name argument ;)
+const getProject = function(arr) {
+  let projName = '-';
+  arr.forEach(function(el, i) {
+		if (el === '-b') {
+			projName = '-' + arr[i+1] + '-';
+		}
+	});
+
+	return projName;
+};
 
 
 
@@ -94,7 +124,6 @@ const humansTXT = () => {
 const templates = () => {
 	return src(config.templates.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-		.pipe(cache('templatesCache'))
 		.pipe(pug({
 			pretty: '\t'
 		}))
@@ -137,7 +166,7 @@ const scripts= () => {
 	return src(config.scripts.src)
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-		.pipe(concat('main.min.js'))
+		.pipe(concat(config.scripts.destName))
 		.pipe(sourcemaps.write('./'))
 		.pipe(dest(config.scripts.dest));
 };
@@ -160,17 +189,21 @@ const plugins = () => {
 
 
 
+// > Process .PUG production ready files into 'public' folder
+const templatesMin = () => {
+	return src(config.templates.src)
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(pug())
+		.pipe(dest(config.templates.dest));
+};
 
 
 
 
 
-
-
-/*
 // > Process SASS/SCSS files to generate final css files in 'public' folder
-gulp.task( 'styles-min' , function(cb) {
-	return gulp.src(config.styles.src)
+const stylesMin = () => {
+	return src(config.styles.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(sass({
 			outputStyle: 'compressed',
@@ -185,68 +218,34 @@ gulp.task( 'styles-min' , function(cb) {
 			],
 			cascade: false
 		}))
-		.pipe(gulp.dest(config.styles.dest))
-		.pipe(notify({message: '> CSS MIN OK', onLast: true}));
-});
-
-
-
-
-
-
-// > Process plugins into a single JS file inside 'assets/js' folder without sourcemaps
-gulp.task('plugins-clean', function(){
-	return gulp.src(config.plugins.src)
-		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-		.pipe(concat('plugins.js'))
-		.pipe(gulp.dest(config.plugins.dest))
-		.pipe(notify({message: 'PLUGINS CLEAN OK', onLast: true}));
-});
-
+		.pipe(dest(config.styles.dest))
+		.pipe(browserSync.stream());
+};
 
 
 
 
 
 // > Process JS scripts into a single minified JS file inside 'assets/js' folder
-gulp.task('scripts-min', function(){
-	return gulp.src(config.scripts.src)
+const scriptsMin= () => {
+	return src(config.scripts.src)
 		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-		.pipe(concat('main.js'))
+		.pipe(concat(config.scripts.destName))
 		.pipe(uglify())
-		.pipe(gulp.dest(config.scripts.dest))
-		.pipe(notify({message: 'JS MIN OK', onLast: true}));
-});
+		.pipe(dest(config.scripts.dest));
+};
 
 
 
 
 
-// > ZIP the public folder
-gulp.task('zipit', ['deploy'], function() {
-	return gulp.src(config.zip.src)
-		.pipe(zip(config.zip.name))
-		.pipe(gulp.dest(config.zip.dest));
-});
-
-
-
-
-
-// > Generate 'public' folder
-gulp.task('default', ['clean'], function (cb) {
-	runSequence('styles', ['icons', 'images', 'vendor-js', 'humansTXT', 'templates', 'templatePartials', 'plugins', 'scripts'], cb);
-});
-
-
-
-
-
-// > Generate production-ready 'public' folder
-gulp.task('deploy', ['clean'], function (cb) {
-	runSequence('styles-min', ['icons', 'images', 'vendor-js', 'humansTXT', 'templates', 'templatePartials', 'plugins-clean', 'scripts-min'], cb);
-});
-*/
+// > Process plugins into a single JS file inside 'assets/js' folder without sourcemaps
+const pluginsMin = () => {
+	return src(config.plugins.src)
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(concat('plugins.js'))
+		.pipe(dest(config.plugins.dest));
+};
 
 
 
@@ -254,6 +253,13 @@ gulp.task('deploy', ['clean'], function (cb) {
 
 // > Generate public folder
 const defaultTasks = series(clean, icons, images, humansTXT, vendorJS, templates, styles, scripts, plugins);
+
+
+
+
+
+// > Generate public folder
+const deploy = series(clean, icons, images, humansTXT, vendorJS, templatesMin, stylesMin, scriptsMin, pluginsMin);
 
 
 
@@ -276,16 +282,38 @@ const go = series(defaultTasks, cb => {
 	cb();
 });
 
+
+
+
+
+// > ZIP the public folder
+const zipit = series(deploy, () => {
+	return src(config.zip.src)
+		.pipe(zip(getTimestamp() + getProject(process.argv) + config.zip.name))
+		.pipe(dest(config.zip.dest));
+});
+
+
+
+
+
+// Final tasks
 module.exports = { 
 	clean, 
 	icons, 
 	images, 
 	humansTXT, 
 	vendorJS, 
-	templates, 
-	styles, 
+	templates,
+	templatesMin, 
+	styles,
+	stylesMin,
 	scripts,
+	scriptsMin,
 	plugins,
-	go
+	pluginsMin,
+	go,
+	deploy,
+	zipit
 };
 module.exports.default = defaultTasks;
