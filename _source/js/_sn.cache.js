@@ -1,3 +1,4 @@
+'use strict';
 /**
  * SN.Cache
  * Cache common objects

@@ -1,3 +1,4 @@
+'use strict';
 /**
  * SN.ExternalLinks
  * Add target="_blank" attribute to external links

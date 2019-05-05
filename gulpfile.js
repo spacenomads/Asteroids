@@ -1,3 +1,4 @@
+'use strict';
 const { src, dest, series, parallel, watch } = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
@@ -34,8 +35,8 @@ const getTimestamp = function() {
 
 // > Get a project name argument ;)
 const getProject = function(arr) {
-  let projName = '-';
-  arr.forEach(function(el, i) {
+	let projName = '-';
+	arr.forEach(function(el, i) {
 		if (el === '-b') {
 			projName = '-' + arr[i+1] + '-';
 		}
@@ -43,13 +44,6 @@ const getProject = function(arr) {
 
 	return projName;
 };
-
-
-
-
-
-// > Manage task's errors
-const onError = (err) => console.log(err);
 
 
 
@@ -118,7 +112,7 @@ const humansTXT = () => {
 // > Process .PUG files into 'public' folder
 const templates = () => {
 	return src(config.templates.src)
-		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(pug({
 			pretty: '\t'
 		}))
@@ -133,7 +127,7 @@ const templates = () => {
 const styles = () => {
 	return src(config.styles.src)
 		.pipe(sourcemaps.init())
-		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(sass({
 			outputStyle: 'extended',
 		}))
@@ -160,7 +154,7 @@ const styles = () => {
 const scripts= () => {
 	return src(config.scripts.src)
 		.pipe(sourcemaps.init())
-		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(concat(config.scripts.destName))
 		.pipe(sourcemaps.write('./'))
 		.pipe(dest(config.scripts.dest));
@@ -174,7 +168,7 @@ const scripts= () => {
 const plugins = () => {
 	return src(config.plugins.src)
 		.pipe(sourcemaps.init())
-		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(concat('plugins.js'))
 		.pipe(sourcemaps.write('./'))
 		.pipe(dest(config.plugins.dest));
@@ -187,7 +181,7 @@ const plugins = () => {
 // > Process .PUG production ready files into 'public' folder
 const templatesMin = () => {
 	return src(config.templates.src)
-		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(pug())
 		.pipe(dest(config.templates.dest));
 };
@@ -199,7 +193,7 @@ const templatesMin = () => {
 // > Process SASS/SCSS files to generate final css files in 'public' folder
 const stylesMin = () => {
 	return src(config.styles.src)
-		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(sass({
 			outputStyle: 'compressed',
 		}))
@@ -224,7 +218,7 @@ const stylesMin = () => {
 // > Process JS scripts into a single minified JS file inside 'assets/js' folder
 const scriptsMin= () => {
 	return src(config.scripts.src)
-		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(concat(config.scripts.destName))
 		.pipe(uglify())
 		.pipe(dest(config.scripts.dest));
@@ -237,7 +231,7 @@ const scriptsMin= () => {
 // > Process plugins into a single JS file inside 'assets/js' folder without sourcemaps
 const pluginsMin = () => {
 	return src(config.plugins.src)
-		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(concat('plugins.js'))
 		.pipe(dest(config.plugins.dest));
 };
@@ -264,7 +258,7 @@ const deploy = series(clean, icons, images, humansTXT, vendorJS, templatesMin, s
 const go = series(defaultTasks, cb => {
 	browserSync.init({
 		server: {
-			baseDir: "public"
+			baseDir: 'public'
 		},
 		online: false
 	});
@@ -293,14 +287,14 @@ const zipit = series(deploy, () => {
 
 
 // Final tasks
-module.exports = { 
-	clean, 
-	icons, 
-	images, 
-	humansTXT, 
-	vendorJS, 
+module.exports = {
+	clean,
+	icons,
+	images,
+	humansTXT,
+	vendorJS,
 	templates,
-	templatesMin, 
+	templatesMin,
 	styles,
 	stylesMin,
 	scripts,

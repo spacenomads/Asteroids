@@ -1,3 +1,4 @@
+'use strict';
 /**
  * SN.snitch
  * Show browser real width, FYI.

@@ -1,8 +1,8 @@
 {
-	"name": "Asteroids",
-	"version": "1.2.0",
+	"name": "asteroids",
+	"version": "1.5.0",
 	"description": "Space Nomads' web starter kit",
-	"main": "gulpfile.js",
+	"main": "public/index.html",
 	"dependencies": {
 		"browser-sync": "*",
 		"del": "*",
@@ -18,7 +18,9 @@
 		"gulp": "*",
 		"gulp-zip": "*"
 	},
-	"devDependencies": {},
+	"bugs": {
+		"url": "https://github.com/spacenomads/Asteroids/issues"
+	},
 	"scripts": {
 		"start": "gulp go",
 		"deploy": "gulp deploy",
@@ -29,6 +31,6 @@
 		"url": "git+ssh://git@github.com:spacenomads/Asteroids.git"
 	},
 	"author": "Space Nomads",
-	"license": "ISC",
+	"license": "CC0-1.0",
 	"homepage": "https://github.com/spacenomads/Asteroids"
 }
