@@ -1,3 +1,4 @@
+'use strict';
 SN.cookies = {
 	gaID : null,
 	gaCode : null,
