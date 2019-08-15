@@ -1,21 +1,21 @@
 {
 	"name": "asteroids",
-	"version": "1.5.0",
+	"version": "1.6.0",
 	"description": "Space Nomads' web starter kit",
 	"main": "public/index.html",
 	"dependencies": {
 		"browser-sync": "*",
 		"del": "*",
+		"gulp": "*",
 		"gulp-autoprefixer": "*",
 		"gulp-combine-mq": "*",
 		"gulp-concat": "*",
+		"gulp-nunjucks-render": "*",
 		"gulp-notify": "*",
 		"gulp-plumber": "*",
-		"gulp-pug": "*",
 		"gulp-sass": "*",
 		"gulp-sourcemaps": "*",
 		"gulp-uglify": "*",
-		"gulp": "*",
 		"gulp-zip": "*"
 	},
 	"bugs": {

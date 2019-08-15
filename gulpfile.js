@@ -1,5 +1,5 @@
 'use strict';
-const { src, dest, series, parallel, watch } = require('gulp');
+const { src, dest, series, watch } = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
 const combineMq = require('gulp-combine-mq');
@@ -8,7 +8,7 @@ const config = require('./config.json');
 const del = require('del');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
-const pug = require('gulp-pug');
+const nunjucksRender = require('gulp-nunjucks-render');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
@@ -109,12 +109,12 @@ const humansTXT = () => {
 
 
 
-// > Process .PUG files into 'public' folder
+// > Process Nunjucks files into 'public' folder
 const templates = () => {
 	return src(config.templates.src)
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
-		.pipe(pug({
-			pretty: '\t'
+		.pipe(nunjucksRender({
+			path: [config.templates.path]
 		}))
 		.pipe(dest(config.templates.dest));
 };
@@ -172,18 +172,6 @@ const plugins = () => {
 		.pipe(concat('plugins.js'))
 		.pipe(sourcemaps.write('./'))
 		.pipe(dest(config.plugins.dest));
-};
-
-
-
-
-
-// > Process .PUG production ready files into 'public' folder
-const templatesMin = () => {
-	return src(config.templates.src)
-		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
-		.pipe(pug())
-		.pipe(dest(config.templates.dest));
 };
 
 
@@ -248,7 +236,7 @@ const defaultTasks = series(clean, icons, images, humansTXT, vendorJS, templates
 
 
 // > Generate public folder
-const deploy = series(clean, icons, images, humansTXT, vendorJS, templatesMin, stylesMin, scriptsMin, pluginsMin);
+const deploy = series(clean, icons, images, humansTXT, vendorJS, templates, stylesMin, scriptsMin, pluginsMin);
 
 
 
@@ -294,7 +282,6 @@ module.exports = {
 	humansTXT,
 	vendorJS,
 	templates,
-	templatesMin,
 	styles,
 	stylesMin,
 	scripts,

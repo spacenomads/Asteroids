@@ -21,11 +21,8 @@
 		"dest": "public"
 	},
 	"templates": {
-		"src": [
-			"_source/templates/**/*.pug",
-			"!_source/templates/partials/**/*.pug",
-			"!_source/templates/layouts/*.pug"
-		],
+		"src": "_source/templates/**/*.njk",
+    "path": "_source/templates/",
 		"dest": "public"
 	},
 	"styles": {
@@ -36,8 +33,7 @@
 		"src": [
 			"_source/js/plugins/_plugins.js",
 			"_source/js/plugins/jquery.cookie.js",
-			"_source/js/plugins/jquery.width_snitch.min.js",
-			"_source/js/plugins/breakpoints.js"
+			"_source/js/plugins/jquery.width_snitch.min.js"
 		],
 		"dest": "public/assets/js/"
 	},
@@ -70,7 +66,7 @@
 			"_source/scss/**/*.{scss,sass,css}"
 		],
 		"templates": [
-			"_source/templates/**/*.pug"
+			"_source/templates/**/*.njk"
 		],
 		"html": [
 			"public/**/*.html",
