@@ -1,12 +1,10 @@
 {
 	"name": "asteroids",
-	"version": "1.6.0",
+	"version": "2.0.0",
 	"description": "Space Nomads' web starter kit",
 	"main": "public/index.html",
-	"dependencies": {
-		"browser-sync": "^2.26.7",
+	"devDependencies": {
 		"del": "^5.1.0",
-		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^7.0.1",
 		"gulp-combine-mq": "*",
 		"gulp-concat": "*",
@@ -16,7 +14,12 @@
 		"gulp-sass": "^4.1.0",
 		"gulp-sourcemaps": "*",
 		"gulp-uglify": "*",
-		"gulp-zip": "^5.0.1"
+		"gulp-zip": "^5.0.1",
+		"gulp": "^4.0.2",
+		"stylelint-config-standard": "^20.0.0",
+		"stylelint-scss": "^3.17.1",
+		"stylelint": "^13.3.3",
+		"browser-sync": "^2.26.7"
 	},
 	"bugs": {
 		"url": "https://github.com/spacenomads/Asteroids/issues"
@@ -25,11 +28,11 @@
 		"start": "gulp go",
 		"deploy": "gulp deploy",
 		"test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "browserslist": [
-    "last 2 versions",
-    "ie >= 10"
-  ],
+	},
+	"browserslist": [
+		"last 2 versions",
+		"ie >= 10"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+ssh://git@github.com:spacenomads/Asteroids.git"
