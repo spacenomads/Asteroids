@@ -40,6 +40,7 @@ Delete and reprocess the public folder with optimized versions of your HTML/CSS/
 ```shell
 $ gulp zipit
 ```
+
 Delete and reprocess the public folder with optimized versions of your HTML/CSS/JS files and compress it in a .zip file.
 
 You can customize the name of the ZIP document editing the config.json file ;)

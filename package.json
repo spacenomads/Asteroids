@@ -4,19 +4,19 @@
 	"description": "Space Nomads' web starter kit",
 	"main": "public/index.html",
 	"dependencies": {
-		"browser-sync": "*",
-		"del": "*",
-		"gulp": "*",
-		"gulp-autoprefixer": "*",
+		"browser-sync": "^2.26.7",
+		"del": "^5.1.0",
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^7.0.1",
 		"gulp-combine-mq": "*",
 		"gulp-concat": "*",
-		"gulp-nunjucks-render": "*",
 		"gulp-notify": "*",
+		"gulp-nunjucks-render": "*",
 		"gulp-plumber": "*",
-		"gulp-sass": "*",
+		"gulp-sass": "^4.1.0",
 		"gulp-sourcemaps": "*",
 		"gulp-uglify": "*",
-		"gulp-zip": "*"
+		"gulp-zip": "^5.0.1"
 	},
 	"bugs": {
 		"url": "https://github.com/spacenomads/Asteroids/issues"
