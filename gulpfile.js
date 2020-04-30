@@ -21,7 +21,7 @@ const zip = require('gulp-zip');
 // > Generate a cool timestamp (YYMMDD)
 const getTimestamp = function() {
 	const date = new Date();
-	const mm = ('0'+(date.getMonth()+1)).slice(-2)
+	const mm = ('0'+(date.getMonth()+1)).slice(-2);
 	const dd = ('0'+date.getUTCDate()).slice(-2);
 	const yy = date.getUTCFullYear().toString().substr(-2);
 	const timestamp = yy + mm + dd;
@@ -135,10 +135,6 @@ const styles = () => {
 			beautify: true
 		}))
 		.pipe(autoprefixer({
-			browsers: [
-				'last 2 versions',
-				'ie >= 10'
-			],
 			cascade: false
 		}))
 		.pipe(sourcemaps.write('./'))
@@ -189,10 +185,6 @@ const stylesMin = () => {
 			beautify: false
 		}))
 		.pipe(autoprefixer({
-			browsers: [
-				'last 2 versions',
-				'ie >= 10'
-			],
 			cascade: false
 		}))
 		.pipe(dest(config.styles.dest))
