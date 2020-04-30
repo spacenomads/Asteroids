@@ -1,20 +1,28 @@
 // MIXINS
 
-@mixin fontFace( $family ,$src , $weight:normal, $style: normal ) {
+@mixin fontFace($family ,$src , $weight: normal, $style: normal) {
 	@font-face {
 		font-family: $family;
-		src: url($src + '.eot');
-		src: url($src + '.eot?#iefix') format('embedded-opentype'), url($src + '.woff') format('woff'), url($src + '.ttf') format('truetype');
 		font-style: $style;
 		font-weight: $weight;
+		src: url($src + '.eot');
+		src: url($src + '.eot?#iefix') format('embedded-opentype'), url($src + '.woff') format('woff'), url($src + '.ttf') format('truetype');
 	}
 }
 
-@mixin mq( $pixels, $width:min-width ) {
+
+
+
+
+@mixin mq($pixels, $width: min-width) {
 	@media screen and ($width: em($pixels)) {
 		@content;
 	}
 }
+
+
+
+
 
 @mixin snitch() {
 	.snitch {
@@ -32,7 +40,66 @@
 	}
 }
 
-@mixin t( $fontSize, $lineHeight ) {
+
+
+
+
+@mixin t($fontSize, $lineHeight) {
 	font-size: rem($fontSize);
 	line-height: lh($lineHeight, $fontSize);
+}
+
+
+
+
+
+@mixin z($level, $list: $levels) {
+	z-index: index($list, $level);
+}
+
+
+
+
+
+@mixin icon($height) {
+	height: rem(1);
+	overflow: hidden;
+	padding: rem($height - 1) 0 0;
+}
+
+
+
+
+
+@mixin accessible-hide() {
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	margin: 0 !important;
+	overflow: hidden;
+	position: absolute;
+}
+
+
+
+
+@mixin content-p($margin: 0) {
+	p {
+		margin: 0;
+
+		& + p {
+			margin-top: rem($margin);
+		}
+	}
+}
+
+
+
+
+
+@include font($type) {
+	@if ($type == 'h1') {
+		margin: 0;
+
+		@include t(24,30);
+	}
 }
