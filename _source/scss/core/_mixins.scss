@@ -96,7 +96,7 @@
 
 
 
-@include font($type) {
+@mixin font($type) {
 	@if ($type == 'h1') {
 		margin: 0;
 

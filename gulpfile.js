@@ -1,4 +1,3 @@
-'use strict';
 const { src, dest, series, watch } = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
@@ -19,22 +18,21 @@ const zip = require('gulp-zip');
 
 
 // > Generate a cool timestamp (YYMMDD)
-const getTimestamp = function() {
+function getTimestamp() {
 	const date = new Date();
 	const mm = ('0'+(date.getMonth()+1)).slice(-2);
 	const dd = ('0'+date.getUTCDate()).slice(-2);
 	const yy = date.getUTCFullYear().toString().substr(-2);
 	const timestamp = yy + mm + dd;
-
 	return timestamp;
-};
+}
 
 
 
 
 
 // > Get a project name argument ;)
-const getProject = function(arr) {
+function getProject(arr) {
 	let projName = '-';
 	arr.forEach(function(el, i) {
 		if (el === '-b') {
@@ -43,88 +41,88 @@ const getProject = function(arr) {
 	});
 
 	return projName;
-};
+}
 
 
 
 
 
 // > Force a browser page reload
-const bsReload = cb => {
+function bsReload(cb) {
 	browserSync.reload();
 	cb();
-};
+}
 
 
 
 
 
 // > Delete Public folder
-const clean = cb => {
+function clean(cb) {
 	del.sync(['public']);
 	cb();
-};
+}
 
 
 
 
 
 // > Copy Icons
-const icons = () => {
+function icons()  {
 	return src(config.icons.src)
 		.pipe(dest(config.icons.dest));
-};
+}
 
 
 
 
 
 // > Copy Images
-const images = () => {
+function images() {
 	return src(config.images.src)
 		.pipe(dest(config.images.dest));
-};
+}
 
 
 
 
 
 // > Copy Vendor JS (Jquery, Modernizr..)
-const vendorJS = () => {
+function vendorJS() {
 	return src(config.vendorJS.src)
 		.pipe(dest(config.vendorJS.dest));
-};
+}
 
 
 
 
 
 // > Copy humansTXT
-const humansTXT = () => {
+function humansTXT() {
 	return src(config.humansTXT.src)
 		.pipe(dest(config.humansTXT.dest));
-};
+}
 
 
 
 
 
 // > Process Nunjucks files into 'public' folder
-const templates = () => {
+function templates() {
 	return src(config.templates.src)
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(nunjucksRender({
 			path: [config.templates.path]
 		}))
 		.pipe(dest(config.templates.dest));
-};
+}
 
 
 
 
 
 // > Process SASS/SCSS files to generate final css files in 'public' folder
-const styles = () => {
+function styles() {
 	return src(config.styles.src)
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
@@ -140,42 +138,42 @@ const styles = () => {
 		.pipe(sourcemaps.write('./'))
 		.pipe(dest(config.styles.dest))
 		.pipe(browserSync.stream());
-};
+}
 
 
 
 
 
 // > Process JS scripts into a single JS file inside 'assets/js' folder
-const scripts= () => {
+function scripts() {
 	return src(config.scripts.src)
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(concat(config.scripts.destName))
 		.pipe(sourcemaps.write('./'))
 		.pipe(dest(config.scripts.dest));
-};
+}
 
 
 
 
 
 // > Process plugins into a single JS file inside 'assets/js' folder
-const plugins = () => {
+function plugins() {
 	return src(config.plugins.src)
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(concat('plugins.js'))
 		.pipe(sourcemaps.write('./'))
 		.pipe(dest(config.plugins.dest));
-};
+}
 
 
 
 
 
 // > Process SASS/SCSS files to generate final css files in 'public' folder
-const stylesMin = () => {
+function stylesMin() {
 	return src(config.styles.src)
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(sass({
@@ -189,32 +187,32 @@ const stylesMin = () => {
 		}))
 		.pipe(dest(config.styles.dest))
 		.pipe(browserSync.stream());
-};
+}
 
 
 
 
 
 // > Process JS scripts into a single minified JS file inside 'assets/js' folder
-const scriptsMin= () => {
+function scriptsMin() {
 	return src(config.scripts.src)
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(concat(config.scripts.destName))
 		.pipe(uglify())
 		.pipe(dest(config.scripts.dest));
-};
+}
 
 
 
 
 
 // > Process plugins into a single JS file inside 'assets/js' folder without sourcemaps
-const pluginsMin = () => {
+function pluginsMin() {
 	return src(config.plugins.src)
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(concat('plugins.js'))
 		.pipe(dest(config.plugins.dest));
-};
+}
 
 
 
