@@ -5,9 +5,11 @@ const combineMq = require('gulp-combine-mq');
 const concat = require('gulp-concat');
 const config = require('./config.json');
 const del = require('del');
+const htmlmin = require('gulp-htmlmin');
+const htmltidy = require('gulp-htmltidy');
 const notify = require('gulp-notify');
-const plumber = require('gulp-plumber');
 const nunjucksRender = require('gulp-nunjucks-render');
+const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
@@ -114,6 +116,11 @@ function templates() {
 		.pipe(nunjucksRender({
 			path: [config.templates.path]
 		}))
+		.pipe(htmltidy({
+			doctype: 'html5',
+			hideComments: true,
+			indent: true
+		}))
 		.pipe(dest(config.templates.dest));
 }
 
@@ -172,7 +179,24 @@ function plugins() {
 
 
 
-// > Process SASS/SCSS files to generate final css files in 'public' folder
+// > Process production-ready Nunjucks files into 'public' folder
+function templatesMin() {
+	return src(config.templates.src)
+		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
+		.pipe(nunjucksRender({
+			path: [config.templates.path]
+		}))
+		.pipe(htmlmin({
+			collapseWhitespace: true
+		}))
+		.pipe(dest(config.templates.dest));
+}
+
+
+
+
+
+// > Process SASS/SCSS files to generate final css files into 'public' folder
 function stylesMin() {
 	return src(config.styles.src)
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
@@ -226,7 +250,7 @@ const defaultTasks = series(clean, icons, images, humansTXT, vendorJS, templates
 
 
 // > Generate public folder
-const deploy = series(clean, icons, images, humansTXT, vendorJS, templates, stylesMin, scriptsMin, pluginsMin);
+const deploy = series(clean, icons, images, humansTXT, vendorJS, templatesMin, stylesMin, scriptsMin, pluginsMin);
 
 
 
@@ -272,6 +296,7 @@ module.exports = {
 	humansTXT,
 	vendorJS,
 	templates,
+	templatesMin,
 	styles,
 	stylesMin,
 	scripts,
