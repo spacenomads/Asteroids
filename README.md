@@ -7,7 +7,7 @@ Ahoy! This kit is our all-new/all-old web starter kit. Use it well!
 <img src="asteroids-700.png" width="350">
 </center>
 
-Asteroids include SASS, jQuery and [PUG](https://github.com/pugjs/pug), a super cool template engine.
+Asteroids include SASS, jQuery and [Nunjucks](https://mozilla.github.io/nunjucks/), a super cool template engine.
 
 ## Quickstart
 
@@ -25,7 +25,7 @@ Install [Node.js](https://nodejs.org/) and [Gulp4](https://gulpjs.com) to run th
 $ npm start
 ```
 
-Launch a web server with browserSync to work on your project. Several watchers will have their eyes on your PUG/SCSS/JS files to reload your connected browsers when needed.
+Launch a web server with browserSync to work on your project. Several watchers will have their eyes on your NJK/SCSS/JS files to reload your connected browsers when needed.
 
 ### Process a production-ready distribution
 
@@ -118,6 +118,8 @@ So, what is next?
 * [X] Add JS Linters
 * [X] Use EJS/Nunjucks instead of PUG
 * [ ] Mobile icons + PSD source file
+* [ ] Quit using Jquery
+* [ ] Update modernizr checkers
 * [ ] ~~Fix PUG/HTML reload loop~~
 
 ## Request a feature
