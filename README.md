@@ -4,7 +4,7 @@
 Ahoy! This kit is our all-new/all-old web starter kit. Use it well!
 
 <center>
-<img src="https://spacenomads.com/assets/img/projects/asteroids/asteroids-700.png" width="350">
+<img src="asteroids-700.png" width="350">
 </center>
 
 Asteroids include SASS, jQuery and [PUG](https://github.com/pugjs/pug), a super cool template engine.
@@ -30,7 +30,7 @@ Launch a web server with browserSync to work on your project. Several watchers w
 ### Process a production-ready distribution
 
 ```shell
-$ gulp deploy
+$ npm run deploy
 ```
 
 Delete and reprocess the public folder with optimized versions of your HTML/CSS/JS files.
@@ -40,6 +40,7 @@ Delete and reprocess the public folder with optimized versions of your HTML/CSS/
 ```shell
 $ gulp zipit
 ```
+
 Delete and reprocess the public folder with optimized versions of your HTML/CSS/JS files and compress it in a .zip file.
 
 You can customize the name of the ZIP document editing the config.json file ;)
@@ -49,9 +50,8 @@ Optionally you can add a keyword to this ZIP file:
 ```shell
 $ gulp zipit -b keyword
 ```
+
 It will generate an ignored `DDMMYY-keyword-project-name.zip` file
-
-
 
 ## Folder structure
 
@@ -116,7 +116,7 @@ So, what is next?
 * [X] Gulp task to generate a timestamped deploy folder
 * [X] Add CSS Linters
 * [X] Add JS Linters
-* [ ] Use EJS/Nunjucks instead of PUG
+* [X] Use EJS/Nunjucks instead of PUG
 * [ ] Mobile icons + PSD source file
 * [ ] ~~Fix PUG/HTML reload loop~~
 
