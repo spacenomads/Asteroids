@@ -21,7 +21,11 @@
 		"dest": "public"
 	},
 	"templates": {
-		"src": "_source/templates/**/*.njk",
+		"src": [
+      "_source/templates/**/*.njk",
+      "!_source/templates/partials/**/*.njk",
+      "!_source/templates/layouts/**/*.njk"
+    ],
     "path": "_source/templates/",
 		"dest": "public"
 	},
