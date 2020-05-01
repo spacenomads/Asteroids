@@ -33,25 +33,12 @@
 		"src": "_source/scss/*.s*ss",
 		"dest": "public/assets/css"
 	},
-	"plugins": {
-		"src": [
-			"_source/js/plugins/_plugins.js",
-			"_source/js/plugins/jquery.cookie.js",
-			"_source/js/plugins/jquery.width_snitch.min.js"
-		],
-		"dest": "public/assets/js/"
-	},
 	"scripts": {
 		"src": [
-			"_source/js/_sn.js",
-			"_source/js/_sn.cache.js",
-			"_source/js/_sn.cookies.js",
-			"_source/js/_sn.externallinks.js",
-			"_source/js/_sn.snitch.js",
-			"_source/js/main.js"
+			"_source/js/**/*.js",
+			"!_source/js/pending/**/*.js"
 		],
-		"dest": "public/assets/js/",
-		"destName": "main.min.js"
+		"dest": "public/assets/js/"
 	},
 	"watch": {
 		"images": [
@@ -64,7 +51,8 @@
 			"_source/humans.txt"
 		],
 		"scripts": [
-			"_source/js/**/*.js"
+			"_source/js/**/*.js",
+			"!_source/js/pending/**/*.js"
 		],
 		"styles": [
 			"_source/scss/**/*.{scss,sass,css}"
