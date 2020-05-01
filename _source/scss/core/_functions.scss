@@ -1,23 +1,25 @@
+// FUNCTIONS
+
 @function em( $pixels, $context: $font_size ) {
-  @return ( $pixels / $context * 1em );
+	@return ( $pixels / $context * 1em );
 }
 
 @function px( $pixels ) {
-  @return ( $pixels * 1px );
+	@return ( $pixels * 1px );
 }
 
 @function rem( $pixels, $context: $font_size ) {
-  @return ( $pixels / $context * 1rem );
+	@return ( $pixels / $context * 1rem );
 }
 
 @function per( $pixels, $context: $dim_sitewidth ) {
-  @return ( $pixels * 100% / $context );
+	@return ( $pixels * 100% / $context );
 }
 
-@function img( $image, $path: $theme ){
-  @return url( $path + $image );
+@function img( $image, $path: $theme ) {
+	@return url( $path + $image );
 }
 
 @function lh( $fline, $fsize: $font_size ) {
-  @return ( $fline * 100% / $fsize );
+	@return ( $fline * 100% / $fsize );
 }

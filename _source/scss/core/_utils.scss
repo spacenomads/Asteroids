@@ -1,0 +1,7 @@
+.accessible-hide {
+	@include accessible-hide();
+}
+
+.hidden {
+	display: none;
+}

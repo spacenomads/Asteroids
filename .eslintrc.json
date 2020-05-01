@@ -5,6 +5,7 @@
     "node": true
   },
   "parserOptions": {
+    "sourceType": "module",
     "ecmaFeatures": {
       "experimentalObjectRestSpread":true
     }

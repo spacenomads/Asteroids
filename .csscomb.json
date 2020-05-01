@@ -21,6 +21,10 @@
   "unitless-zero": true,
   "sort-order": [
     [
+      "$extend",
+      "$include"
+    ],
+    [
       "-webkit-font-smoothing",
       "-moz-osx-font-smoothing",
 
@@ -228,6 +232,7 @@
       "filter:progid:DXImageTransform.Microsoft.Alpha(Opacity",
       "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader",
       "filter:progid:DXImageTransform.Microsoft.gradient",
+      "filter",
       "flex",
       "flex-align",
       "flex-basis",
@@ -323,6 +328,7 @@
       "quotes",
       "resize",
       "right",
+      "row-gap",
       "scroll-behavior",
       "tab-size",
       "table-layout",
@@ -362,6 +368,9 @@
       "writing-mode",
       "z-index",
       "zoom"
+    ],
+    [
+      "$include mq"
     ]
   ]
 }

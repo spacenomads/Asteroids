@@ -1,0 +1,27 @@
+{% set menu = [
+	{
+		label: "Item 1",
+		link: "link1",
+		ext: true
+	},
+	{
+		label: "Item 2",
+		link: "link3",
+		ext: false
+	},
+	{
+		label: "Item 3",
+		link: "link3",
+		ext: true
+	}
+] %}
+
+<nav class="navigation">
+	<ul class="menu">
+		{% for item in menu %}
+			<li class="menu__item">
+				<a class="menu__link {{"ext" if item.ext}}" href="{{item.link}}">{{item.label}}</a>
+			</li>
+		{% endfor %}
+	</ul>
+</nav>
