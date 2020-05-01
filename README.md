@@ -30,7 +30,7 @@ Launch a web server with browserSync to work on your project. Several watchers w
 ### Process a production-ready distribution
 
 ```shell
-$ gulp deploy
+$ npm run deploy
 ```
 
 Delete and reprocess the public folder with optimized versions of your HTML/CSS/JS files.
@@ -50,9 +50,8 @@ Optionally you can add a keyword to this ZIP file:
 ```shell
 $ gulp zipit -b keyword
 ```
+
 It will generate an ignored `DDMMYY-keyword-project-name.zip` file
-
-
 
 ## Folder structure
 
@@ -117,7 +116,7 @@ So, what is next?
 * [X] Gulp task to generate a timestamped deploy folder
 * [X] Add CSS Linters
 * [X] Add JS Linters
-* [ ] Use EJS/Nunjucks instead of PUG
+* [X] Use EJS/Nunjucks instead of PUG
 * [ ] Mobile icons + PSD source file
 * [ ] ~~Fix PUG/HTML reload loop~~
 
