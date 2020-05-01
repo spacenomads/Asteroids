@@ -2,7 +2,6 @@ const { src, dest, series, watch } = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
 const combineMq = require('gulp-combine-mq');
-const concat = require('gulp-concat');
 const config = require('./config.json');
 const del = require('del');
 const htmlmin = require('gulp-htmlmin');
@@ -12,7 +11,7 @@ const nunjucksRender = require('gulp-nunjucks-render');
 const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
-const uglify = require('gulp-uglify');
+//const uglify = require('gulp-uglify');
 const zip = require('gulp-zip');
 
 
@@ -156,23 +155,8 @@ function scripts() {
 	return src(config.scripts.src)
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
-		.pipe(concat(config.scripts.destName))
 		.pipe(sourcemaps.write('./'))
 		.pipe(dest(config.scripts.dest));
-}
-
-
-
-
-
-// > Process plugins into a single JS file inside 'assets/js' folder
-function plugins() {
-	return src(config.plugins.src)
-		.pipe(sourcemaps.init())
-		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
-		.pipe(concat('plugins.js'))
-		.pipe(sourcemaps.write('./'))
-		.pipe(dest(config.plugins.dest));
 }
 
 
@@ -221,8 +205,7 @@ function stylesMin() {
 function scriptsMin() {
 	return src(config.scripts.src)
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
-		.pipe(concat(config.scripts.destName))
-		.pipe(uglify())
+		//.pipe(uglify())
 		.pipe(dest(config.scripts.dest));
 }
 
@@ -230,27 +213,15 @@ function scriptsMin() {
 
 
 
-// > Process plugins into a single JS file inside 'assets/js' folder without sourcemaps
-function pluginsMin() {
-	return src(config.plugins.src)
-		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
-		.pipe(concat('plugins.js'))
-		.pipe(dest(config.plugins.dest));
-}
+// > Generate public folder
+const defaultTasks = series(clean, icons, images, humansTXT, vendorJS, templates, styles, scripts);
 
 
 
 
 
 // > Generate public folder
-const defaultTasks = series(clean, icons, images, humansTXT, vendorJS, templates, styles, scripts, plugins);
-
-
-
-
-
-// > Generate public folder
-const deploy = series(clean, icons, images, humansTXT, vendorJS, templatesMin, stylesMin, scriptsMin, pluginsMin);
+const deploy = series(clean, icons, images, humansTXT, vendorJS, templatesMin, stylesMin, scriptsMin);
 
 
 
@@ -268,7 +239,7 @@ const go = series(defaultTasks, cb => {
 	watch(config.watch.vendorJS, series(vendorJS, bsReload));
 	watch(config.watch.humansTXT, humansTXT);
 	watch(config.watch.styles, styles);
-	watch(config.watch.scripts, series(plugins, scripts, bsReload));
+	watch(config.watch.scripts, series(scripts, bsReload));
 	watch(config.watch.templates, series(templates, bsReload));
 	cb();
 });
@@ -301,8 +272,6 @@ module.exports = {
 	stylesMin,
 	scripts,
 	scriptsMin,
-	plugins,
-	pluginsMin,
 	go,
 	deploy,
 	zipit
