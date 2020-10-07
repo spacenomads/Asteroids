@@ -9,6 +9,7 @@ const htmltidy = require('gulp-htmltidy');
 const notify = require('gulp-notify');
 const nunjucksRender = require('gulp-nunjucks-render');
 const plumber = require('gulp-plumber');
+const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 //const uglify = require('gulp-uglify');
@@ -213,6 +214,120 @@ function scriptsMin() {
 
 
 
+// GITHUB PAGES
+// > Create CNAME file into production folder
+function cname() {
+	return src(config.cname.src)
+		.pipe(rename(path => {
+			path.basename = config.cname.name;
+			path.extname = '';
+		}))
+		.pipe(dest(config.cname.docs));
+}
+
+
+
+
+
+// > Delete production folder
+function cleanPro(cb) {
+	del.sync(['docs']);
+	cb();
+}
+
+
+
+
+
+// > Copy Icons into production folder
+function iconsPro()  {
+	return src(config.icons.src)
+		.pipe(dest(config.icons.pro));
+}
+
+
+
+
+
+// > Copy Images into production folder
+function imagesPro() {
+	return src(config.images.src)
+		.pipe(dest(config.images.pro));
+}
+
+
+
+
+
+// > Copy Vendor JS (Modernizr..) into production folder
+function vendorJSPro() {
+	return src(config.vendorJS.src)
+		.pipe(dest(config.vendorJS.pro));
+}
+
+
+
+
+
+// > Copy humansTXT into production folder
+function humansTXTPro() {
+	return src(config.humansTXT.src)
+		.pipe(dest(config.humansTXT.pro));
+}
+
+
+
+
+
+// > Process production-ready Nunjucks files into production folder
+function templatesMinPro() {
+	return src(config.templates.src)
+		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
+		.pipe(nunjucksRender({
+			path: [config.templates.path]
+		}))
+		.pipe(htmlmin({
+			collapseWhitespace: true
+		}))
+		.pipe(dest(config.templates.pro));
+}
+
+
+
+
+
+// > Process SASS/SCSS files to generate final css files into production folder
+function stylesMinPro() {
+	return src(config.styles.src)
+		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
+		.pipe(sass({
+			outputStyle: 'compressed',
+		}))
+		.pipe(combineMq({
+			beautify: false
+		}))
+		.pipe(autoprefixer({
+			cascade: false
+		}))
+		.pipe(dest(config.styles.pro));
+}
+
+
+
+
+
+// > Process JS scripts into production folder
+function scriptsMinPro() {
+	return src(config.scripts.src)
+		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
+		//.pipe(uglify())
+		.pipe(dest(config.scripts.pro));
+}
+
+
+
+
+
 // > Generate public folder
 const defaultTasks = series(clean, icons, images, humansTXT, vendorJS, templates, styles, scripts);
 
@@ -222,6 +337,13 @@ const defaultTasks = series(clean, icons, images, humansTXT, vendorJS, templates
 
 // > Generate public folder
 const deploy = series(clean, icons, images, humansTXT, vendorJS, templatesMin, stylesMin, scriptsMin);
+
+
+
+
+
+// > Generate public folder
+const production = series(cleanPro, iconsPro, imagesPro, humansTXTPro, vendorJSPro, templatesMinPro, stylesMinPro, scriptsMinPro, cname);
 
 
 
@@ -262,18 +384,28 @@ const zipit = series(deploy, () => {
 // Final tasks
 module.exports = {
 	clean,
+	cleanPro,
+	cname,
 	icons,
+	iconsPro,
 	images,
+	imagesPro,
 	humansTXT,
+	humansTXTPro,
 	vendorJS,
+	vendorJSPro,
 	templates,
 	templatesMin,
+	templatesMinPro,
 	styles,
 	stylesMin,
+	stylesMinPro,
 	scripts,
 	scriptsMin,
+	scriptsMinPro,
 	go,
 	deploy,
+	production,
 	zipit
 };
 module.exports.default = defaultTasks;

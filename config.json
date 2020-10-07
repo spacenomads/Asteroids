@@ -1,4 +1,9 @@
 {
+  "cname": {
+    "src": "_source/config/custom-domain.txt",
+    "docs": "docs",
+    "name": "CNAME"
+  },
 	"zip": {
 		"src": "public/**/*.*",
 		"dest": "./",
@@ -6,19 +11,23 @@
 	},
 	"icons": {
 		"src": "_source/assets/icons/**.*",
-		"dest": "public"
+		"dest": "public",
+		"pro": "docs"
 	},
 	"images": {
 		"src": "_source/assets/img/**/*.{gif,jpg,jpeg,png,svg}",
-		"dest": "public/assets/img"
+    "dest": "public/assets/img",
+    "pro": "docs/assets/img"
 	},
 	"vendorJS": {
 		"src": "_source/assets/js/vendor/*.js",
-		"dest": "public/assets/js/vendor"
+    "dest": "public/assets/js/vendor",
+    "pro": "docs/assets/js/vendor"
 	},
 	"humansTXT": {
 		"src": "_source/humans.txt",
-		"dest": "public"
+    "dest": "public",
+    "pro": "docs"
 	},
 	"templates": {
 		"src": [
@@ -27,18 +36,21 @@
       "!_source/templates/layouts/**/*.njk"
     ],
     "path": "_source/templates/",
-		"dest": "public"
+    "dest": "public",
+    "pro": "docs"
 	},
 	"styles": {
 		"src": "_source/scss/*.s*ss",
-		"dest": "public/assets/css"
+    "dest": "public/assets/css",
+    "pro": "docs/assets/css"
 	},
 	"scripts": {
 		"src": [
 			"_source/js/**/*.js",
 			"!_source/js/pending/**/*.js"
 		],
-		"dest": "public/assets/js/"
+    "dest": "public/assets/js/",
+    "pro": "docs/assets/js"
 	},
 	"watch": {
 		"images": [
