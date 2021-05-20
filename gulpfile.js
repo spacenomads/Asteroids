@@ -1,11 +1,10 @@
 const { src, dest, series, watch } = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
-const combineMq = require('gulp-combine-mq');
 const config = require('./config.json');
 const del = require('del');
 const htmlmin = require('gulp-htmlmin');
-const htmltidy = require('gulp-htmltidy');
+const htmlbeautify = require('gulp-html-beautify');
 const notify = require('gulp-notify');
 const nunjucksRender = require('gulp-nunjucks-render');
 const plumber = require('gulp-plumber');
@@ -14,6 +13,8 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 //const uglify = require('gulp-uglify');
 const zip = require('gulp-zip');
+const mqpacker = require('@hail2u/css-mqpacker');
+const postcss = require('gulp-postcss');
 
 
 
@@ -116,10 +117,9 @@ function templates() {
 		.pipe(nunjucksRender({
 			path: [config.templates.path]
 		}))
-		.pipe(htmltidy({
-			doctype: 'html5',
-			hideComments: true,
-			indent: true
+		.pipe(htmlbeautify({
+			'preserve_newlines': false,
+			'indent_with_tabs': true,
 		}))
 		.pipe(dest(config.templates.dest));
 }
@@ -130,15 +130,14 @@ function templates() {
 
 // > Process SASS/SCSS files to generate final css files in 'public' folder
 function styles() {
+	const plugins = [mqpacker({sort: true})];
 	return src(config.styles.src)
 		.pipe(sourcemaps.init())
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(sass({
 			outputStyle: 'extended',
 		}))
-		.pipe(combineMq({
-			beautify: true
-		}))
+		.pipe(postcss(plugins))
 		.pipe(autoprefixer({
 			cascade: false
 		}))
@@ -187,9 +186,6 @@ function stylesMin() {
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(sass({
 			outputStyle: 'compressed',
-		}))
-		.pipe(combineMq({
-			beautify: false
 		}))
 		.pipe(autoprefixer({
 			cascade: false
@@ -302,9 +298,6 @@ function stylesMinPro() {
 		.pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
 		.pipe(sass({
 			outputStyle: 'compressed',
-		}))
-		.pipe(combineMq({
-			beautify: false
 		}))
 		.pipe(autoprefixer({
 			cascade: false
