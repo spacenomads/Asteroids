@@ -3,3 +3,25 @@
 // @import 'vendors/vendors';
 @import 'components/components';
 // @import 'pages/pages';
+
+.test {
+	color: red;
+
+	@media (min-width: 500px) {
+		color: green;
+	}
+}
+
+.test2 {
+	color: tomato;
+	@media (min-width: 500px) {
+		color: green;
+	}
+	@media all and (min-width: 400px) {
+		color: green;
+	}
+
+	@media (max-width: 400px) {
+		color: green;
+	}
+}
