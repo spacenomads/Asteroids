@@ -14,7 +14,7 @@ const sourcemaps = require('gulp-sourcemaps');
 //const uglify = require('gulp-uglify');
 const zip = require('gulp-zip');
 const mqpacker = require('@hail2u/css-mqpacker');
-var postcss = require('gulp-postcss');
+const postcss = require('gulp-postcss');
 
 
 
