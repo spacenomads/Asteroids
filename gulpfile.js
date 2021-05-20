@@ -5,7 +5,7 @@ const combineMq = require('gulp-combine-mq');
 const config = require('./config.json');
 const del = require('del');
 const htmlmin = require('gulp-htmlmin');
-const htmltidy = require('gulp-htmltidy');
+const htmlbeautify = require('gulp-html-beautify');
 const notify = require('gulp-notify');
 const nunjucksRender = require('gulp-nunjucks-render');
 const plumber = require('gulp-plumber');
@@ -116,10 +116,9 @@ function templates() {
 		.pipe(nunjucksRender({
 			path: [config.templates.path]
 		}))
-		.pipe(htmltidy({
-			doctype: 'html5',
-			hideComments: true,
-			indent: true
+		.pipe(htmlbeautify({
+			'preserve_newlines': false,
+			'indent_with_tabs': true,
 		}))
 		.pipe(dest(config.templates.dest));
 }
