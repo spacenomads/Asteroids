@@ -1,13 +1,16 @@
 
 # Asteroids
 
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+
 Ahoy! This kit is our all-new/all-old web starter kit. Use it well!
 
 <center>
 <img src="asteroids-700.png" width="350">
 </center>
 
-Asteroids include SASS, jQuery and [Nunjucks](https://mozilla.github.io/nunjucks/), a super cool template engine.
+Asteroids include SASS, ~~jQuery~~ and [Nunjucks](https://mozilla.github.io/nunjucks/), a super cool template engine created by Mozilla.
+
 
 ## Quickstart
 
@@ -125,3 +128,4 @@ So, what is next?
 ## Request a feature
 
 Do you miss anything? Feel free to request a feature or contribute to making it better ;)
+
