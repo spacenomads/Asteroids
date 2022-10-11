@@ -1,0 +1,12 @@
+body {
+  color: #007aff;
+}
+@media screen and (min-width: 600px) {
+  body {
+    color: black;
+  }
+  p {
+    border: 1px solid blue;
+  }
+}
+/*# sourceMappingURL=main.css.map */
