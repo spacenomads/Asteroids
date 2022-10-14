@@ -1,80 +1,26 @@
 {
-  "cname": {
-    "src": "_source/config/custom-domain.txt",
-    "docs": "docs",
-    "name": "CNAME"
+  "env": {
+    "dev": "dev",
+    "pro": "pro"
   },
-	"zip": {
-		"src": "public/**/*.*",
-		"dest": "./",
-		"name": "project-name.zip"
-	},
-	"icons": {
-		"src": "_source/assets/icons/**.*",
-		"dest": "public",
-		"pro": "docs"
-	},
-	"images": {
-		"src": "_source/assets/img/**/*.{gif,jpg,jpeg,png,svg}",
-    "dest": "public/assets/img",
-    "pro": "docs/assets/img"
-	},
-	"vendorJS": {
-		"src": "_source/assets/js/vendor/*.js",
-    "dest": "public/assets/js/vendor",
-    "pro": "docs/assets/js/vendor"
-	},
-	"humansTXT": {
-		"src": "_source/humans.txt",
-    "dest": "public",
-    "pro": "docs"
-	},
-	"templates": {
-		"src": [
-      "_source/templates/**/*.njk",
-      "!_source/templates/partials/**/*.njk",
-      "!_source/templates/layouts/**/*.njk"
-    ],
-    "path": "_source/templates/",
-    "dest": "public",
-    "pro": "docs"
-	},
+  "zip": {
+    "src": "dist/**/*.*",
+    "dest": "zip/"
+  },
 	"styles": {
-		"src": "_source/scss/*.s*ss",
-    "dest": "public/assets/css",
-    "pro": "docs/assets/css"
+		"src": "_src/assets/_scss/*.s*ss",
+    "dest": "_src/assets/css"
 	},
 	"scripts": {
-		"src": [
-			"_source/js/**/*.js",
-			"!_source/js/pending/**/*.js"
-		],
-    "dest": "public/assets/js/",
-    "pro": "docs/assets/js"
+		"src": "_src/assets/_scripts/*.js",
+    "dest": "_src/assets/js"
 	},
 	"watch": {
-		"images": [
-			"_source/assets/img/**/*.{gif,jpg,jpeg,png,svg}"
-		],
-		"vendorJS": [
-			"_source/assets/js/vendor/*.js"
-		],
-		"humansTXT": [
-			"_source/humans.txt"
+		"styles": [
+			"_src/assets/_scss/**/*.s*ss"
 		],
 		"scripts": [
-			"_source/js/**/*.js",
-			"!_source/js/pending/**/*.js"
-		],
-		"styles": [
-			"_source/scss/**/*.{scss,sass,css}"
-		],
-		"templates": [
-			"_source/templates/**/*.njk"
-		],
-		"html": [
-			"public/**/*.html",
-			"!public/assets"
+			"_src/assets/_scripts/**/*.js"
 		]
 	}
 }
