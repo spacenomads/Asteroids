@@ -27,12 +27,13 @@
     "url": "https://github.com/spacenomads/Asteroids/issues"
   },
   "scripts": {
-    "build": "(npm run clean || true) && eleventy",
+    "build": "(npm run clean || true) && npm run build:assets && eleventy",
     "build:pro": "cross-env MODE=pro npm run build",
     "watch": "eleventy --watch",
     "serve": "npm run clean && eleventy --serve",
-    "start": "cross-env MODE=dev npm-run-all --parallel assets serve",
-    "assets": "gulp go",
+    "start": "cross-env MODE=dev npm-run-all --parallel watch:assets serve",
+    "watch:assets": "gulp go",
+    "build:assets": "gulp build",
     "clean": "rm -rf dist/*",
     "debug": "DEBUG=* eleventy"
   },
