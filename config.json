@@ -3,6 +3,10 @@
     "dev": "dev",
     "pro": "pro"
   },
+  "zip": {
+    "src": "dist/**/*.*",
+    "dest": "zip/"
+  },
 	"styles": {
 		"src": "_src/assets/_scss/*.s*ss",
     "dest": "_src/assets/css"
