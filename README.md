@@ -9,16 +9,16 @@ Ahoy! This kit is our all-new/all-old web starter kit. Use it well!
 <img src="asteroids-700.png" width="350">
 </center>
 
-Asteroids include SASS, ~~jQuery~~ and [Nunjucks](https://mozilla.github.io/nunjucks/), a super cool template engine created by Mozilla.
+With the help of [Gulp](https://gulpjs.com) and [11ty](https://www.11ty.dev/), Asteroids includes SCSS processing, JS minification and [Nunjucks](https://mozilla.github.io/nunjucks/), a super cool template engine created by Mozilla.
 
 
 ## Quickstart
 
-Install [Node.js](https://nodejs.org/) and [Gulp4](https://gulpjs.com) to run this starter kit.
+Install [Node.js](https://nodejs.org/) and [Gulp](https://gulpjs.com) to run this starter kit.
 
 1. Download or clone the repository
 2. Install the local dependencies with `$ npm i`
-3. Run the kit with `$ npm start`
+3. Run the kit development stuff with `$ npm start`
 
 ## Tasks
 
@@ -28,15 +28,15 @@ Install [Node.js](https://nodejs.org/) and [Gulp4](https://gulpjs.com) to run th
 $ npm start
 ```
 
-Launch a web server with browserSync to work on your project. Several watchers will have their eyes on your NJK/SCSS/JS files to reload your connected browsers when needed.
+Launch Eleventy in serve mode and run some Gulp tasks to keep an eye on your SCSS/JS files to process and reload your project on port 8080
 
 ### Process a production-ready distribution
 
 ```shell
-$ npm run deploy
+$ npm run build:pro
 ```
 
-Delete and reprocess the public folder with optimized versions of your HTML/CSS/JS files.
+Delete and reprocess the dist folder with optimized versions of your HTML/CSS/JS files.
 
 ### Compress a production-ready distribution
 
@@ -46,47 +46,45 @@ $ gulp zipit
 
 Delete and reprocess the public folder with optimized versions of your HTML/CSS/JS files and compress it in a .zip file.
 
-You can customize the name of the ZIP document editing the config.json file ;)
+The task picks the name of the project from the package.json "name" property.
 
-Optionally you can add a keyword to this ZIP file:
-
-```shell
-$ gulp zipit -b keyword
-```
-
-It will generate an ignored `DDMMYY-keyword-project-name.zip` file
+It will generate an ignored `DDMMYY-hm-project-name.zip` file
 
 ## Folder structure
 
-Our **gulpfile.js** uses a configuration JSON file to set source and destination files of the project.
+The **gulpfile.js** uses a configuration JSON file to set source and destination files of the project.
 Check config.json out and edit what you need.
 
 The project folder structure looks like this:
 
 ```txt
-/
-|- _source
-|   |- assets
-|   |   |- icons
-|   |   |- img
-|   |   `- js
-|   |       `- vendor
-|   |- js
-|   |   |- components
-|   |   `- plugins
-|   |- scss
-|   |   |- components
-|   |   |- core
-|   |   |- pages
-|   |   `- vendors
-|   `- templates
-|      |- layout
-|      `- partials
-`- public
-   `- assets
-       |- css
-       |- img
-       `- js
+/.
+├── _src/
+│   ├── _data/
+│   │   └── settings.js
+│   ├── _templates/
+│   │   └── layouts/
+│   ├── assets/
+│   │   ├── _domain/
+│   │   ├── _icon/
+│   │   ├── _scripts/
+│   │   ├── _scss/
+│   │   ├── css/
+│   │   ├── fonts/
+│   │   ├── images/
+│   │   └── js/
+│   └── index.njk
+└── dist/
+    ├── CNAME
+    ├── assets/
+    │   ├── css/
+    │   ├── fonts/
+    │   ├── images/
+    │   └── js/
+    ├── favicon.ico
+    ├── humans.txt
+    └── index.html
+
 ```
 
 ## CSS
@@ -94,23 +92,16 @@ The project folder structure looks like this:
 Asteroids do not include a CSS reset stylesheet anymore, but we have added two awesome tools:
 
 * A **csscomb** JSON file to use with your code editor as your own risk :)
-* The risky [**gulp-combine-mq**](https://www.npmjs.com/package/gulp-combine-mq) package to group and combine all your media queries.
+* The media query combiner tool from @hail2u [**css-mqpacker**](https://github.com/hail2u/node-css-mqpacker/pkgs/npm/css-mqpacker).
 
-## JS
+## LINTERS AND STUFF
+A few linter configurations are also included in Asteroids: Eslint, Stylelint and Markdown lint. You may need certain plugins or extensions for your code editor in order to use them.
 
-**Asteroids** use JQuery, Modernizr and two JS files, main.js, and plugins.js, located before the `</body>` tag. You can find the custom build of Modernizr in the `<head>` section of the page.
+> 👉 There is no such thing as a pre commit configuration or autoformat setting, these linters are only meant to show "problems" as you edit any JS/SCSS/MD file.
 
-| Item | Version | URL |
-| ------ | ------- | --- |
-| JQuery | v3.2.1 | [https://jquery.com](https://jquery.com)
-| Modernizr | v3.5.0 | [https://modernizr.com](https://modernizr.com)
-| Width_snitch | v1 | [https://github.com/oneeyedman/Width-Snitch/](https://github.com/oneeyedman/Width-Snitch/)
-| Breakpoints | v1.0 | [https://github.com/xoxco/breakpoints](https://github.com/xoxco/breakpoints)
-| jQuery Cookie Plugin | v1.4.0 | [https://github.com/carhartl/jquery-cookie](https://github.com/carhartl/jquery-cookie)
 
 ## Browser Support
-
-That's up to you ;)
+That's up to you :), although you can find a "browserlist" property for the autoprefixer in the package.json file.
 
 ## TODO
 
@@ -120,12 +111,14 @@ So, what is next?
 * [X] Add CSS Linters
 * [X] Add JS Linters
 * [X] Use EJS/Nunjucks instead of PUG
+* [X] Quit using Jquery
+* [X] Migrate to 11ty
+* [ ] Add a GitHub Pages action
 * [ ] Mobile icons + PSD source file
-* [ ] Quit using Jquery
-* [ ] Update modernizr checkers
-* [ ] ~~Fix PUG/HTML reload loop~~
+* ~~Update modernizr checkers~~
+* ~~Fix PUG/HTML reload loop~~
 
 ## Request a feature
 
-Do you miss anything? Feel free to request a feature or contribute to making it better ;)
+Do you miss anything? Feel free to [request a feature](https://github.com/spacenomads/Asteroids/issues/new?assignees=oneeyedman&labels=%F0%9F%92%A1+New%21&template=---feature-request.md&title=) or contribute to making it better ;)
 

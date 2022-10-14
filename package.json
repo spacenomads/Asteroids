@@ -17,6 +17,7 @@
     "gulp-postcss": "^9.0.1",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
+    "gulp-zip": "^5.1.0",
     "html-minifier": "^4.0.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.17",
@@ -35,6 +36,7 @@
     "start": "cross-env MODE=dev npm-run-all --parallel watch:assets serve",
     "watch:assets": "gulp go",
     "build:assets": "gulp build",
+    "build:zip": "gulp zipit",
     "clean": "rm -rf dist/*",
     "debug": "DEBUG=* eleventy"
   },

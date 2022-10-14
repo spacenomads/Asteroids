@@ -1,6 +1,7 @@
 const { src, dest, series, watch } = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const config = require('./config.json');
+const packageJson = require('./package.json');
 const gulpif = require('gulp-if');
 const isDev = process.env.MODE === config.env.dev;
 const minify = require('gulp-minify');
@@ -8,11 +9,37 @@ const mqpacker = require('@hail2u/css-mqpacker');
 const postcss = require('gulp-postcss');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
+const zip = require('gulp-zip');
+
+
+
+
+
+// UTILS
+// > Generate a cool timestamp (YYMMDD)
+function getTimestamp() {
+	const date = new Date();
+	const mm = ('0'+(date.getMonth()+1)).slice(-2);
+	const dd = ('0'+date.getUTCDate()).slice(-2);
+	const yy = date.getUTCFullYear().toString().substr(-2);
+	const h = date.getHours();
+	const m = date.getMinutes();
+	const timestamp = `${yy}${mm}${dd}-${h}${m}-`;
+	return timestamp;
+}
+
 
 
 
 
 // TASKS
+// > ZIP the public folder
+function zipit() {
+	return src(config.zip.src)
+		.pipe(zip(getTimestamp() + packageJson.name + '.zip'))
+		.pipe(dest(config.zip.dest));
+}
+
 function styles() {
 	const plugins = [mqpacker({ sort: true })];
 	return src(config.styles.src)
@@ -52,5 +79,6 @@ const go = series(build, function (cb) {
 module.exports = {
 	build,
 	styles,
-	go
+	go,
+	zipit
 };
