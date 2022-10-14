@@ -16,9 +16,12 @@ module.exports = function (config) {
   config.addPassthroughCopy('_src/**/img/*.*');
   config.addPassthroughCopy('_src/assets/fonts');
   config.addPassthroughCopy('_src/assets/css/*.css');
-	if (mode !== 'pro') config.addPassthroughCopy('_src/assets/css/*.map');
   config.addPassthroughCopy('_src/assets/images');
-  config.addPassthroughCopy('_src/assets/js');
+  config.addPassthroughCopy('_src/assets/js/**/*.js');
+	if (mode !== 'pro') {
+		config.addPassthroughCopy('_src/assets/css/*.map');
+		config.addPassthroughCopy('_src/assets/js/**/*.map');
+	}
 
   config.addPlugin(eleventyNavigationPlugin);
 

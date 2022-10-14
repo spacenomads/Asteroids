@@ -7,9 +7,16 @@
 		"src": "_src/assets/_scss/*.s*ss",
     "dest": "_src/assets/css"
 	},
+	"scripts": {
+		"src": "_src/assets/_scripts/*.js",
+    "dest": "_src/assets/js"
+	},
 	"watch": {
 		"styles": [
 			"_src/assets/_scss/**/*.s*ss"
+		],
+		"scripts": [
+			"_src/assets/_scripts/**/*.js"
 		]
 	}
 }
