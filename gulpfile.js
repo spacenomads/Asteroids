@@ -3,6 +3,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const config = require('./config.json');
 const gulpif = require('gulp-if');
 const isDev = process.env.MODE === config.env.dev;
+const minify = require('gulp-minify');
 const mqpacker = require('@hail2u/css-mqpacker');
 const postcss = require('gulp-postcss');
 const sass = require('gulp-sass')(require('sass'));
@@ -27,10 +28,24 @@ function styles() {
 		.pipe(dest(config.styles.dest));
 }
 
-const build = series(styles);
+function scripts() {
+	return src(config.scripts.src)
+		.pipe(minify({
+			noSource: true,
+			ext: {
+				min: '.js'
+			}
+		}))
+		.pipe(gulpif(isDev, sourcemaps.init()))
+		.pipe(gulpif(isDev, sourcemaps.write('./')))
+		.pipe(dest(config.scripts.dest));
+}
+
+const build = series(styles, scripts);
 
 const go = series(build, function (cb) {
 	watch(config.watch.styles, styles);
+	watch(config.watch.scripts, scripts);
 	cb();
 });
 

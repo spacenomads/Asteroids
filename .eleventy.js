@@ -15,9 +15,13 @@ module.exports = function (config) {
   config.addPassthroughCopy({'_src/assets/_icon/favicon.ico': '/favicon.ico'});
   config.addPassthroughCopy('_src/**/img/*.*');
   config.addPassthroughCopy('_src/assets/fonts');
-  config.addPassthroughCopy('_src/assets/css');
+  config.addPassthroughCopy('_src/assets/css/*.css');
   config.addPassthroughCopy('_src/assets/images');
-  config.addPassthroughCopy('_src/assets/js');
+  config.addPassthroughCopy('_src/assets/js/**/*.js');
+	if (mode !== 'pro') {
+		config.addPassthroughCopy('_src/assets/css/*.map');
+		config.addPassthroughCopy('_src/assets/js/**/*.map');
+	}
 
   config.addPlugin(eleventyNavigationPlugin);
 

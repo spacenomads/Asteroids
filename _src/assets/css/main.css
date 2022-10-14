@@ -6,7 +6,8 @@ body {
     color: black;
   }
   p {
-    border: 1px solid blue;
+    border: 1px solid orange;
+    color: blue;
   }
 }
 /*# sourceMappingURL=main.css.map */
