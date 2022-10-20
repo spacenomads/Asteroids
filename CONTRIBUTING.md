@@ -1,10 +1,10 @@
 # Do you want to contribute? ^__^
 
-v1.0 | 19.2.2022
+v1.1 | 20.10.2022
 
 Thank you for considering contributing to **Asteroids**!
 
-Asteroids is a web starter kit that generates static sites using SCSS and a super cool Javascript template language called [Nunjucks]().
+ [Asteroids](https://github.com/spacenomads/Asteroids/) is a web starter kit that generates static sites using 11ty, Gulp, SCSS and a super cool Javascript template language called [Nunjucks](https://mozilla.github.io/nunjucks/).
 
 If you give it a go and/or find something that is missing you can contribute to the project by:
 
