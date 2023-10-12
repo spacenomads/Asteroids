@@ -4,7 +4,7 @@
   "description": "Space Nomads' web starter kit",
   "main": "dist/index.html",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.2",
+    "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-navigation": "^0.3.5",
     "@hail2u/css-mqpacker": "github:hail2u/node-css-mqpacker",
     "cross-env": "^7.0.3",
