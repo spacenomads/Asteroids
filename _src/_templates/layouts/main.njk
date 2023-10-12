@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="{{ settings.lang }}">
 <head>
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#212121" media="(prefers-color-scheme: dark)">
-<title>{{ settings.siteName }}</title>
-<script src="assets/js/app.js" type="module" defer></script>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#212121" media="(prefers-color-scheme: dark)">
+	<title>{{ settings.siteName }}</title>
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script src="assets/js/app.js" type="module" defer></script>
 </head>
 <body>
-  <div class="page">
-    <header class="page__header header">
-  		<div class="wrapper">
-    		<a href="/" class="header__brand">
-      		<div class="brand">Asteroids</div>
-    		</a>
-  		</div>
+	<div class="page">
+		<header class="page__header header">
+			<div class="wrapper">
+				<a href="/" class="header__brand">
+					<div class="brand">Asteroids</div>
+				</a>
+			</div>
 
 			{{ collections.all | eleventyNavigation | eleventyNavigationToHtml({
 				listElement: 'ul',
@@ -26,12 +27,12 @@
 				anchorClass: 'menu__link'
 			}) | safe }}
 		</header>
-    <main class="page__main main">
-      {{ content | safe }}
-    </main>
-    <footer class="page__footer">
+		<main class="page__main main">
+			{{ content | safe }}
+		</main>
+		<footer class="page__footer">
 			{{ settings.year }}
 		</footer>
-  </div>
+	</div>
 </body>
 </html>

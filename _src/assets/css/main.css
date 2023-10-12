@@ -1,7 +1,9 @@
 body {
+  background-color: #f4f5f6;
   color: #007aff;
+  font-size: 1.25rem;
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 37.5em) {
   body {
     color: black;
   }

@@ -1,0 +1,73 @@
+@use 'vars';
+
+// ***
+//  Stylesheet _functions.scss
+//
+//  Table of Contents:
+//    1. em()
+//    2. rem()
+//    3. px()
+//    4. per()
+//    5. img()
+//    6. lh()
+//
+// ***
+
+
+
+
+
+// 1. em()
+// ---
+@function em( $pixels, $context: vars.$font-size ) {
+	@return calc($pixels / $context * 1em);
+}
+
+
+
+
+// 2. rem()
+// ---
+@function rem( $pixels ) {
+	$context: vars.$font-size;
+	@return calc($pixels / $context * 1rem);
+}
+
+
+
+
+// 3. px()
+// ---
+@function px( $pixels ) {
+	@return calc($pixels * 1px);
+}
+
+
+
+
+
+// 4. per()
+// ---
+@function per( $pixels, $context: vars.$page-max-width ) {
+	@return ( $pixels * 100% / $context );
+}
+
+
+
+
+
+// 5. img()
+// ---
+@function img( $image, $path: vars.$theme ) {
+	@return url( $path + $image );
+}
+
+
+
+
+
+// 6. lh()
+// ---
+@function lh( $fline, $fsize: vars.$font-size ) {
+	@return calc($fline * 100% / $fsize);
+}
