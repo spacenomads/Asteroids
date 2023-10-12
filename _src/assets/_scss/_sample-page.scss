@@ -1,0 +1,18 @@
+@use 'core/core';
+
+body {
+	background-color: core.$color-bg;
+	color: core.$color-correct-blue;
+	font-size: core.rem(20);
+
+	@include core.mq(600) {
+		color: black;
+	}
+}
+
+@include core.mq(600) {
+	p {
+		border: 1px solid orange;
+		color: blue;
+	}
+}

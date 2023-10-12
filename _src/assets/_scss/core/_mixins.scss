@@ -1,0 +1,51 @@
+@use 'vars';
+@use 'functions' as fn;
+
+// ***
+//  Stylesheet _mixins.scss
+//
+//  Table of Contents:
+//    1. z()
+//    2. mq()
+//    3. screen-reader-only()
+//
+// ***
+
+
+
+
+
+// 1. z()
+// ---
+@mixin z($level, $list: vars.$levels) {
+	z-index: index($list, $level);
+}
+
+
+
+
+
+// 2. mq()
+// ---
+@mixin mq($pixels, $width: min-width) {
+	@media screen and ($width: fn.em($pixels)) {
+		@content;
+	}
+}
+
+
+
+
+
+// 3. screen-reader-only()
+// ---
+@mixin screen-reader-only() {
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}

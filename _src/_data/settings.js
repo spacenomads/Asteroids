@@ -18,8 +18,9 @@ function getStaticsVersion() {
 
 
 module.exports = {
-	'lang': 'en',
-	'mode': process.env.MODE,
-	'version': getStaticsVersion(),
-	'year': getYear(),
+	lang: 'en',
+	mode: process.env.MODE,
+	siteName: 'Asteroids',
+	version: getStaticsVersion(),
+	year: getYear(),
 };

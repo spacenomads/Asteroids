@@ -1,16 +1,1 @@
-$color-correct-blue: #007aff;
-
-body {
-	color: $color-correct-blue;
-
-	@media screen and (min-width: 600px) {
-		color: black;
-	}
-}
-
-@media screen and (min-width: 600px) {
-	p {
-		border: 1px solid orange;
-		color: blue;
-	}
-}
+@use 'sample-page';

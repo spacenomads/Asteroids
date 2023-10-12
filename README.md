@@ -4,11 +4,10 @@
 ![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/spacenomads/Asteroids/main?label=Version&labelColor=414141&color=ffcc00)
  [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg?labelColor=%23414141&color=%23ffcc00)](code_of_conduct.md)
 
-
 Ahoy! This kit is my all-new/all-old web starter kit. Use it well!
 
 <center>
-<img src="asteroids-700.png" width="350">
+<img src="asteroids-700.png" width="350" alt="">
 </center>
 
 With the help of [Gulp](https://gulpjs.com) and [11ty](https://www.11ty.dev/), Asteroids includes SCSS processing, JS minification and [Nunjucks](https://mozilla.github.io/nunjucks/), a super cool template engine created by Mozilla.
@@ -161,4 +160,3 @@ So, what is next?
 ## Request a feature
 
 Do you miss anything? Feel free to [request a feature](https://github.com/spacenomads/Asteroids/issues/new?assignees=oneeyedman&labels=%F0%9F%92%A1+New%21&template=---feature-request.md&title=) or contribute to making it better ;)
-
