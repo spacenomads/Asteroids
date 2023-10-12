@@ -11,7 +11,7 @@
 		"color-hex-case": "lower",
 		"color-hex-length": "short",
 		"color-no-invalid-hex": true,
-		"comment-no-empty": true,
+		"comment-no-empty": null,
 		"comment-whitespace-inside": "always",
 		"declaration-bang-space-before": "always",
 		"declaration-block-no-duplicate-properties": true,
@@ -67,6 +67,7 @@
 		"unit-no-unknown": true,
 		"value-keyword-case": "lower",
 		"scss/at-extend-no-missing-placeholder": true,
-		"scss/at-rule-no-unknown": true
+		"scss/at-rule-no-unknown": true,
+    "scss/comment-no-empty": null
 	}
 }
