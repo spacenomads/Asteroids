@@ -1,12 +1,14 @@
 ---
 title: home
-layout: layouts/main.njk
+layout: layouts/sample-layout.njk
 eleventyNavigation:
   key: home
 ---
-<section class="latest-posts content" data-published="{{ settings.version }}" data-mode="{{ settings.mode }}">
-  <div class="wrapper">
-    YAY
+<section class="hero content" data-published="{{ settings.version }}" data-mode="{{ settings.mode }}">
+	<div class="wrapper">
+		<hgroup class="hero__asteroids">
+			<h1 class="hero__asteroids-title"><span class="hero__asteroids-title-main">Asteroids</span> <small class="hero__asteroids-by">by Spacenomads</small></h1>
+		</hgroup>
   </div>
 </section>
 

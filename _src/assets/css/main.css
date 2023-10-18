@@ -1,15 +1,183 @@
-body {
-  background-color: #f4f5f6;
-  color: #007aff;
-  font-size: 1.25rem;
+.u__sr-only {
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
-@media screen and (min-width: 37.5em) {
-  body {
-    color: black;
+
+/* glegoo-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: Glegoo;
+  font-style: normal;
+  font-weight: 700;
+  src: url(/assets/fonts/glegoo/glegoo-v16-latin-700.woff2) format("woff2");
+}
+/* roboto-300 - latin */
+@font-face {
+  font-display: swap;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  src: url(/assets/fonts/roboto/roboto-v30-latin-300.woff2) format("woff2");
+}
+/* roboto-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: url(/assets/fonts/roboto/roboto-v30-latin-regular.woff2) format("woff2");
+}
+body {
+  font-size: 100%;
+  font-family: roboto, arial, sans-serif;
+  margin: 0;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f4f5f6));
+  background-image: linear-gradient(#fff, #f4f5f6);
+  background-color: #f4f5f6;
+}
+
+.page {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* HERO */
+.hero {
+  height: 100%;
+  padding: 3.125em;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.hero .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+}
+
+.hero__asteroids {
+  font-size: clamp(0.875rem, 0.7917rem + 0.4167vw, 1.125rem);
+}
+
+.hero__asteroids-title {
+  font-size: 3.4375em;
+  margin: 0;
+}
+.hero__asteroids-title::before {
+  content: "";
+  width: 4.5454545455em;
+  height: 4.5454545455em;
+  background: url("/assets/images/sample-page/hero/asteroids.png") left top no-repeat;
+  background-size: cover;
+  display: block;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.hero__asteroids-title-main {
+  color: #084e62;
+  font-family: glegoo, arial, sans-serif;
+}
+
+.hero__asteroids-by {
+  color: #75af9e;
+  font-weight: 300;
+  display: block;
+  text-align: right;
+  font-size: 30%;
+  margin-top: -1.5em;
+}
+
+/* FOOTER */
+.footer {
+  color: white;
+  line-height: 1.875rem;
+}
+
+.footer__items {
+  background-color: #084e62;
+  padding: 0.9375rem 1.875rem;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.footer__item + .footer__item::before {
+  content: "|";
+  margin: 0 0.5em;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: #b5e0cf;
+}
+
+.footer__license {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0.15em;
+}
+
+.footer__license-cc,
+.footer__license-zero {
+  height: 0.0625rem;
+  padding-top: 0.9375rem;
+  width: 1rem;
+  display: inline-block;
+  background: url("/assets/images/sample-page/icons/cc-logo.svg") left top no-repeat;
+  background-size: 100% auto;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.footer__license-zero {
+  background-image: url("/assets/images/sample-page/icons/cc-zero.svg");
+  margin-left: 0.15em;
+}
+
+.footer__year {
+  margin-left: 0.15em;
+}
+
+@media screen and (min-width: 40.625em) {
+  .footer {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
-  p {
-    border: 1px solid orange;
-    color: blue;
+  .footer__items {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: auto;
   }
 }
 /*# sourceMappingURL=main.css.map */

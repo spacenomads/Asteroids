@@ -18,6 +18,11 @@
 // ---
 $color-correct-blue: #007aff;
 $color-bg: #f4f5f6;
+$gradient-bg: linear-gradient(#fff, #f4f5f6);
+$color-space-green: #084e62;
+$color-space-light-green: #75af9e;
+$color-space-extra-light-green: #b5e0cf;
+$color-space-dark-orange: #903d25;
 
 
 
@@ -26,6 +31,8 @@ $color-bg: #f4f5f6;
 // 2. Fonts
 // ---
 $font-size: 16;
+$font-sample: roboto, arial, sans-serif;
+$font-asteroids: glegoo, arial, sans-serif;
 
 
 
@@ -48,4 +55,4 @@ $levels: footer, content, header;
 
 //  5. Themes
 // ---
-$theme: 'layout/'
+$theme: '/assets/images/sample-page/';
