@@ -1,18 +1,150 @@
 @use 'core/core';
 
 body {
+	font-size: 100%;
+	font-family: core.$font-sample;
+	margin: 0;
+	background-image: core.$gradient-bg;
 	background-color: core.$color-bg;
-	color: core.$color-correct-blue;
-	font-size: core.rem(20);
+}
 
-	@include core.mq(600) {
-		color: black;
+.page {
+	display: grid;
+	grid-template-rows: 1fr auto;
+	min-height: 100vh;
+	min-height: 100dvh;
+}
+
+
+
+
+
+/* HERO */
+.hero {
+	height: 100%;
+	padding: core.em(50);
+	box-sizing: border-box;
+
+	.wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
 	}
 }
 
-@include core.mq(600) {
-	p {
-		border: 1px solid orange;
-		color: blue;
+.hero__asteroids {
+	font-size: clamp(.875rem, .7917rem + .4167vw, 1.125rem);
+	// font-size: core.rem(14);
+
+	// @include core.mq(650) {
+	// 	font-size: core.rem(18);
+	// }
+}
+
+.hero__asteroids-title {
+	font-size: core.em(55);
+	margin: 0;
+
+	&::before {
+		content: '';
+		width: core.em(250, 55);
+		height: core.em(250, 55);
+		background: core.img('hero/asteroids.png') left top no-repeat;
+		background-size: cover;
+		display: block;
+		border-radius: 50%;
+		margin: 0 auto;
 	}
 }
+
+.hero__asteroids-title-main {
+	color: core.$color-space-green;
+	font-family: core.$font-asteroids;
+}
+
+.hero__asteroids-by {
+	color: core.$color-space-light-green;
+	font-weight: 300;
+	display: block;
+	text-align: right;
+	font-size: 30%;
+	margin-top: -1.5em;
+}
+
+.hero__asteroids-version {}
+
+
+
+
+
+/* FOOTER */
+.footer {
+	color: white;
+	line-height: core.rem(30);
+	@include core.mq(650) {
+		justify-content: center;
+		display: flex;
+
+	}
+}
+
+.footer__items {
+	background-color: core.$color-space-green;
+	padding: core.rem(15) core.rem(30);
+	margin: 0;
+	list-style: none;
+	text-align: center;
+
+	@include core.mq(650) {
+		display: flex;
+		justify-content: center;
+		width: auto;
+	}
+}
+
+.footer__item {
+	& + .footer__item {
+		&::before {
+			content: '|';
+			margin: 0 .5em;
+		}
+	}
+}
+
+.footer__link {
+	text-decoration: none;
+	color: core.$color-space-extra-light-green;
+}
+
+.footer__license {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: .15em;
+}
+
+.footer__license-cc,
+.footer__license-zero {
+	height: core.rem(1);
+	padding-top: core.rem(15);
+	width: core.rem(16);
+	display: inline-block;
+	background: core.img('icons/cc-logo.svg') left top no-repeat;
+	background-size: 100% auto;
+	overflow: hidden;
+	vertical-align: middle;
+}
+
+.footer__license-zero {
+	background-image: core.img('icons/cc-zero.svg');
+	margin-left: .15em;
+}
+
+.footer__year {
+	margin-left: .15em;
+}
+
+.footer__link {}
+
+

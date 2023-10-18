@@ -1,0 +1,5 @@
+@use 'mixins';
+
+.u__sr-only {
+	@include mixins.screen-reader-only();
+}

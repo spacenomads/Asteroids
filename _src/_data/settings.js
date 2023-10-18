@@ -1,3 +1,5 @@
+var pjson = require('../../package.json');
+
 function getYear() {
 	return new Date().getFullYear();
 }
@@ -6,7 +8,7 @@ function getYear() {
 
 
 
-function getStaticsVersion() {
+function getStaticsVersioning() {
 	const version = new Date()
 		.toISOString()
 		.replace(/[^A-SU-Y0-9]/g, '');
@@ -21,6 +23,7 @@ module.exports = {
 	lang: 'en',
 	mode: process.env.MODE,
 	siteName: 'Asteroids',
-	version: getStaticsVersion(),
+	version: getStaticsVersioning(),
 	year: getYear(),
+	projectVersion: pjson.version,
 };
