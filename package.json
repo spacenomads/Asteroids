@@ -1,6 +1,6 @@
 {
   "name": "asteroids",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "Space Nomads' web starter kit",
   "main": "dist/index.html",
   "devDependencies": {
