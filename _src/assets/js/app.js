@@ -1,2 +1,2 @@
-console.log("☄️ Asteroids v3.0.0");
+console.log("☄️ Asteroids v4.0.0");
 //# sourceMappingURL=app.js.map
